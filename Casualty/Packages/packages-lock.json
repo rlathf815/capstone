@@ -7,6 +7,7 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< Updated upstream
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
       "depth": 1,
@@ -14,6 +15,8 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> Stashed changes
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 1,
@@ -21,6 +24,7 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< Updated upstream
     "com.unity.feature.development": {
       "version": "1.0.1",
       "depth": 0,
@@ -35,6 +39,8 @@
         "com.unity.testtools.codecoverage": "1.2.2"
       }
     },
+=======
+>>>>>>> Stashed changes
     "com.unity.ide.rider": {
       "version": "3.0.18",
       "depth": 0,
@@ -60,6 +66,7 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< Updated upstream
     "com.unity.performance.profile-analyzer": {
       "version": "1.2.2",
       "depth": 1,
@@ -74,6 +81,8 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> Stashed changes
     "com.unity.test-framework": {
       "version": "1.1.31",
       "depth": 0,
@@ -85,6 +94,7 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< Updated upstream
     "com.unity.testtools.codecoverage": {
       "version": "1.2.2",
       "depth": 1,
@@ -95,6 +105,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> Stashed changes
     "com.unity.textmeshpro": {
       "version": "3.0.6",
       "depth": 0,
