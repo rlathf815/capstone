@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class OpenElevator : MonoBehaviour
 {
     public bool OnOff;//for test, public
