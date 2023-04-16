@@ -236,6 +236,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: fov
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: holdToCrouch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: maxLookAngle
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: hideBarWhenFull
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: mouseSensitivity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_Name
       value: FirstPersonController
@@ -445,6 +465,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4558383938389372, guid: ff63a5584728a3343bccdfcd6c6dcf35, type: 3}
   m_PrefabInstance: {fileID: 512526364}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &546785623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+  m_PrefabInstance: {fileID: 81609720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &546785630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546785623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b70d56e6e03f141b3c9788a64fa5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnOff: 0
+  LeftDoor: {fileID: 1563288797}
+  RightDoor: {fileID: 653874675}
 --- !u!1001 &642539410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -506,6 +546,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4461669326557940, guid: 88531c6ce2c21324f835ce1f9aa2b84f, type: 3}
   m_PrefabInstance: {fileID: 642539410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &653874675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3102698491615813111, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
+  m_PrefabInstance: {fileID: 3543264649411306624}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &680785923
 PrefabInstance:
@@ -1404,6 +1449,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4221335733834684, guid: 938e18d9eec66804b8a1ace2e665720c, type: 3}
   m_PrefabInstance: {fileID: 1532122001}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1563288797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8917899115457393561, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
+  m_PrefabInstance: {fileID: 3543264649411306624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1718795845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,9 +1817,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 455996650663986648, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 575309815926559340, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
       propertyPath: m_Name
       value: HallWay
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910598253909387391, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910598253909387391, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910598253909387391, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3543264648599530819, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
       propertyPath: m_RootOrder
@@ -1814,6 +1880,14 @@ PrefabInstance:
     - target: {fileID: 3543264648599530819, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6210119147541752547, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6210119147541752547, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83fe809112d46ba4b9f502550853ff11, type: 3}

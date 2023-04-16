@@ -2,8 +2,6 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-<<<<<<< HEAD
-=======
 <<<<<<< Updated upstream
 [Ll]ibrary/
 [Tt]emp/
@@ -13,19 +11,14 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 =======
->>>>>>> main
 [Ll]ibrary
 [Tt]emp
 [Oo]bj
 [Bb]uild
 [Bb]uilds
 [Ll]ogs
-<<<<<<< HEAD
-[Mm]emoryCaptures
-=======
 [Mm]emoryCapturesS
 >>>>>>> Stashed changes
->>>>>>> main
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
