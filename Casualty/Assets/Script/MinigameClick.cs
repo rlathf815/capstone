@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class MinigameClick : MonoBehaviour
 {
-    public Vector3 screenPoint;
-    public Vector3 offset;
-
-    public Vector3 dd;
-
     public bool isDragging = false;
     public GameObject hitObject;
+    private RaycastHit hit;
 
     public Vector3 DraggingPosition;
-    public Vector3 clickedObject;//드래그 시작한 물체 좌표 저장
+    public Vector3 clickedObject;//드래그 시작한 물체 좌표 저장 , 마우스를 떼면 원래 자리로 돌려놓는것에 쓰임.
 
+    //마우스를 올려놓은 오브젝트를 강조할지, 오브젝트 위치에 이름 ui를 배치할지 고민중.
 
-    //벽바닥 제외하고 오브젝트는 그대론데 콜라이더만 움직이는 현상발생.
     // Update is called once per frame
     void Update()
     {
@@ -24,7 +20,7 @@ public class MinigameClick : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
+            
             if (Physics.Raycast(ray, out hit))
             {
                 isDragging = true;
@@ -34,11 +30,6 @@ public class MinigameClick : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0))
-        {         
-        }
-
-        
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -50,9 +41,17 @@ public class MinigameClick : MonoBehaviour
 
         if (isDragging)
         {
-            dd = hitObject.transform.position;
-            DraggingPosition = new Vector3(Input.mousePosition.x/-1280, 1.5f, Input.mousePosition.y/-720);
+            //드래그 중에 레이가 닿은곳을 드래깅포지션으로 새로 설정
+            //태그랑 오브젝트 배치하면 됨.
+            //UI설정해야함.
+            if (Physics.Raycast(ray, out hit))
+            {
+                DraggingPosition = hit.point;
+                DraggingPosition.y = 1.2f;
+            }          
             hitObject.transform.position = DraggingPosition;
+            
         }
     }
+    
 }
