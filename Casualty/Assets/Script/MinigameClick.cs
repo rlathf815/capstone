@@ -21,7 +21,7 @@ public class MinigameClick : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Med"))
             {
                 isDragging = true;
                 hitObject = hit.transform.gameObject;
@@ -37,6 +37,7 @@ public class MinigameClick : MonoBehaviour
             isDragging = false;
             DraggingPosition = new Vector3();
             clickedObject = new Vector3();
+            hitObject = null;
         }
 
         if (isDragging)
