@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class OpenElevator : MonoBehaviour
 {
-    public bool OnOff;//for test, public
+    public static bool OnOff;//for test, public
 
     public GameObject LeftDoor;
     public GameObject RightDoor;
@@ -14,10 +14,11 @@ public class OpenElevator : MonoBehaviour
     Vector3 RMove = new Vector3(0.7f, 0, 0);
     Vector3 LMove = new Vector3(-0.7f, 0, 0);
     // Start is called before the first frame update
+   
     void Start()
     {
         OnOff = false;
-        
+
         LPos = LeftDoor.transform.position;
         RPos = RightDoor.transform.position;
 
@@ -26,7 +27,7 @@ public class OpenElevator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(OnOff == false)
+        if (OnOff == false)
         {
             if (LeftDoor.transform.position == LPos+LMove && RightDoor.transform.position == RPos+RMove)
             {
