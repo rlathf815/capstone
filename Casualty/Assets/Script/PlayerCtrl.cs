@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
+    // Flashlight //
+    public GameObject flashlight;
+    private bool isTurnOn = false;
     // 마우스 회전
     public float turnSpeed = 4.0f; // 마우스 회전 속도    
     private float xRotate = 0.0f; // 내부 사용할 X축 회전량은 별도 정의 ( 카메라 위 아래 방향 )
@@ -18,12 +22,14 @@ public class PlayerCtrl : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();           // Rigidbody를 가져온다.
         transform.rotation = Quaternion.identity;   // 회전 상태를 정면으로 초기화
+            
     }
 
     void FixedUpdate()
     {
         Move();
         Jump();
+        Flashlight();
     }
 
     void Move()
@@ -67,6 +73,15 @@ public class PlayerCtrl : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGround = true;
+        }
+    }
+    // On/Off Flashlight
+    void Flashlight()
+    {
+        if (Input.GetKey(KeyCode.F))
+        {
+            flashlight.SetActive(isTurnOn);
+            isTurnOn = !isTurnOn;
         }
     }
 }
