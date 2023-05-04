@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Med
   - Collider
+  - Elevator
+  - ElevatorButtonOpen
+  - ElevatorNumericButton
+  - ElevatorGoButton
+  - StitchImage
   layers:
   - Default
   - TransparentFX
