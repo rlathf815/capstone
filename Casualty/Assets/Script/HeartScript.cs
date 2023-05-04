@@ -11,6 +11,15 @@ public class HeartScript : MonoBehaviour
     private bool spaced = false;
     private bool completeGame = false;
 
+    //사운드관련
+
+    public AudioClip heartBeat;//박동소리
+    public AudioClip beeping;//심장 되살아나는 소리(10회부터)
+    public AudioClip flatline;//flatline= 심장이 멈추면 일자로 선이 그어져서 플랫라인 삐-
+    private AudioSource audioSource1;
+    private AudioSource audioSource2;
+    private AudioSource audioSource3;
+
 
     public float animationLength = 1f;
 
@@ -19,13 +28,29 @@ public class HeartScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spaced = false;
+        audioSource1 = transform.GetChild(0).GetComponent<AudioSource>();
+        audioSource2 = transform.GetChild(1).GetComponent<AudioSource>();
+        audioSource3 = transform.GetChild(2).GetComponent<AudioSource>();
+
+        audioSource1.clip = heartBeat;
+        audioSource1.volume = 1.0f;
+
+        audioSource2.clip = beeping;
+        audioSource2.loop = true;
+        audioSource2.volume = 0.0f;
+
+        audioSource3.clip = flatline;
+        audioSource3.loop = true;
+        audioSource3.volume = 0.1f;
+        
+        audioSource2.Play();
+        audioSource3.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         // 60프레임으로 갱신
         timeElapsed += Time.deltaTime * 60f;
 
@@ -38,9 +63,16 @@ public class HeartScript : MonoBehaviour
         // 30프레임마다 타이머 리셋
         if (timeElapsed >= animationLength * 30f)
         {
+            audioSource1.PlayOneShot(heartBeat);
             timeElapsed = 0f;
             spaced = false;
             Debug.Log("Reset");
+        }
+
+        if(success == 10)
+        {
+            audioSource3.Stop();
+            audioSource2.volume = 1.0f;
         }
 
         if(success >= 20)
