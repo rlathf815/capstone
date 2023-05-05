@@ -11,6 +11,7 @@ TagManager:
   - ElevatorNumericButton
   - ElevatorGoButton
   - StitchImage
+  - PlayerController
   layers:
   - Default
   - TransparentFX
