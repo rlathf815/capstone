@@ -5,9 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneManage : MonoBehaviour
 {
-    public void SceneChange()
+    public Canvas ui;
+
+    void Update()
     {
-        //SceneManager.LoadScene("MiniGameScene");
-        Debug.Log("btn clicked");
+        if (ui != null && ui.gameObject.activeSelf)
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                SceneManager.LoadScene("MiniGameScene");
+            }
+        }
+        
     }
 }
