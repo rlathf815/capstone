@@ -8,6 +8,7 @@ public class CollisionDetector : MonoBehaviour
     private Vector3 originPos;
     public AudioClip correctActionSound;
     public AudioClip wrongActionSound;
+    public GameObject UI;
     [SerializeField] public GameObject[] objects;
     //private bool correct = false;;
     private int index = 0;
@@ -27,11 +28,14 @@ public class CollisionDetector : MonoBehaviour
         //Debug.Log("collision detected");
         if (other.gameObject == correctMove || other.gameObject.transform.IsChildOf(correctMove.transform))
         {
-            Debug.Log("correct move");
+            Debug.Log("correct move - index"+ index + "out of "+ max + " "+other.gameObject);
             audioSource.PlayOneShot(correctActionSound);
             //correct = true;
             if (index < max - 1)
                 index++;
+            else
+                UI.SetActive(true);
+            
             
         }
         else
@@ -44,5 +48,6 @@ public class CollisionDetector : MonoBehaviour
     void Update()
     {
         correctMove = objects[index];
+      
     }
 }
