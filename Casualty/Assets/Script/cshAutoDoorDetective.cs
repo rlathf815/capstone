@@ -9,7 +9,6 @@ public class cshAutoDoorDetective : MonoBehaviour
         if(col.gameObject.tag == "AutoDoorDetectArea")
         {
             col.gameObject.GetComponent<cshOpenDoor>().OnOff = true;
-            print("true");
         }
     }
     private void OnTriggerExit(Collider col)
@@ -17,7 +16,6 @@ public class cshAutoDoorDetective : MonoBehaviour
         if (col.gameObject.tag == "AutoDoorDetectArea")
         {
             col.gameObject.GetComponent<cshOpenDoor>().OnOff = false;
-            print("false");
         }
     }
 }
