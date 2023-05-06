@@ -10,8 +10,8 @@ public class cshOpenDoor : MonoBehaviour
     public GameObject RightDoor;
     Vector3 LPos;
     Vector3 RPos;
-    Vector3 RMove = new Vector3(-0.7f, 0, 0);
-    Vector3 LMove = new Vector3(0.7f, 0, 0);
+    Vector3 RMove = new Vector3(0.7f, 0, 0);
+    Vector3 LMove = new Vector3(-0.7f, 0, 0);
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +29,10 @@ public class cshOpenDoor : MonoBehaviour
         {
             if (LeftDoor.transform.position == LPos + LMove && RightDoor.transform.position == RPos + RMove)
             {
-                RightDoor.transform.Translate(LMove);
-                LeftDoor.transform.Translate(RMove);
+                RightDoor.transform.position = Vector3.MoveTowards(RightDoor.transform.position, RPos, 1);
+                //RightDoor.transform.Translate(LMove);
+                LeftDoor.transform.position = Vector3.MoveTowards(LeftDoor.transform.position, LPos, 1);
+                //LeftDoor.transform.Translate(RMove);
             }
 
         }
@@ -38,8 +40,10 @@ public class cshOpenDoor : MonoBehaviour
         {
             if (LeftDoor.transform.position == LPos && RightDoor.transform.position == RPos)
             {
-                RightDoor.transform.Translate(RMove);
-                LeftDoor.transform.Translate(LMove);
+                RightDoor.transform.position = Vector3.MoveTowards(RightDoor.transform.position, RMove + RPos, 1);
+                //RightDoor.transform.Translate(RMove);
+                LeftDoor.transform.position = Vector3.MoveTowards(LeftDoor.transform.position, LMove + LPos, 1);
+                //LeftDoor.transform.Translate(LMove);
             }
 
         }

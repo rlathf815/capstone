@@ -12,6 +12,7 @@ TagManager:
   - ElevatorGoButton
   - StitchImage
   - PlayerController
+  - AutoDoorDetectArea
   layers:
   - Default
   - TransparentFX
