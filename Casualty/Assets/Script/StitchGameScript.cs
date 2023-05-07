@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class StitchGameScript : MonoBehaviour
 {
+    public Slider hpbar;
+    public float maxHp;
+    public float currenthp;//hp
+
     public GameObject Cut_detect1;
     public GameObject Cut_detect2;//절개 시작과끝
 
