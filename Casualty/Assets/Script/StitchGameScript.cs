@@ -5,19 +5,18 @@ using UnityEngine.UI;
 
 public class StitchGameScript : MonoBehaviour
 {
-    public Slider hpbar;
-    public float maxHp;
-    public float currenthp;//hp
 
     public GameObject Cut_detect1;
     public GameObject Cut_detect2;//절개 시작과끝
 
-    public Sprite StitchImage;
-    private Vector3 originPos;
+
+    public GameObject Guts;
+
+    //public Sprite StitchImage;
+    //private Vector3 originPos;
     private bool Cut_start = false;
     private bool isCut = false;
 
-    //private GameObject imageObj;
 
     public AudioClip cuttingSound;
     private AudioSource audioSource;
@@ -26,6 +25,7 @@ public class StitchGameScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Guts.gameObject.SetActive(false);
         Canvas myCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         cutImage = myCanvas.transform.Find("Cut_Through").GetComponent<Image>();
         //imageObj = GameObject.FindGameObjectWithTag("stitchImage");
@@ -34,7 +34,7 @@ public class StitchGameScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        originPos = other.gameObject.transform.position;
+        //originPos = other.gameObject.transform.position;
         if (other.gameObject == Cut_detect1 && Cut_start == false)
         {
             Cut_start = true;
@@ -53,9 +53,11 @@ public class StitchGameScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isCut == true)
+
+        if (isCut == true)
         {
             cutImage.gameObject.SetActive(false);
+            Guts.gameObject.SetActive(true);
         }
     }
 
