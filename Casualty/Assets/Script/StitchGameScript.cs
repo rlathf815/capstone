@@ -54,11 +54,12 @@ public class StitchGameScript : MonoBehaviour
     void Update()
     {
 
-        if (isCut == true)
+        if (isCut == true && Guts != null)
         {
             cutImage.gameObject.SetActive(false);
             Guts.gameObject.SetActive(true);
         }
+
     }
 
     void ImgChange()
