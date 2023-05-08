@@ -6,10 +6,12 @@ using TMPro;//textmeshpro
 
 public class StitchMiniMain : MonoBehaviour
 {
-    private int BloodLoss = 5;//일반적으로 혈액을 잃는 속도
+    private int BloodLoss = 10;//일반적으로 혈액을 잃는 속도
 
     public TextMeshProUGUI healthText;//현재 HP값을 출력할 TextMeshpro
     private Image cutImage;
+    public bool iscut = false;
+
 
     public Slider hpbar;
     public float maxHp=10000f;
@@ -39,7 +41,8 @@ public class StitchMiniMain : MonoBehaviour
 
         if (cutImage.gameObject.activeSelf == false)
         {//절개 후 혈액 잃는 속도 증가
-            BloodLoss = 10;
+            iscut = true;
+            BloodLoss = 25;
         }
     }
 }
