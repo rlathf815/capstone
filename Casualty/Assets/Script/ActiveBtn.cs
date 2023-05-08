@@ -10,7 +10,7 @@ public class ActiveBtn : MonoBehaviour
     {
         Debug.Log("trigger entered" + other.tag);
         
-        if (other.gameObject.CompareTag("PlayerController"))
+        if (other.gameObject.CompareTag("Player"))
         {
             UI.SetActive(true);
             if (Input.GetKey(KeyCode.E))
@@ -25,7 +25,7 @@ public class ActiveBtn : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         Debug.Log("trigger exited" + other.tag);
-        if (other.gameObject.CompareTag("PlayerController"))
+        if (other.gameObject.CompareTag("Player"))
         {
             UI.SetActive(false);
 
