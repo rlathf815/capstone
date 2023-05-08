@@ -13,7 +13,7 @@ public class ActiveBtn : MonoBehaviour
     {
         Debug.Log("trigger entered" + other.tag);
         Debug.Log("current patient name = "  + gameObject.name);
-
+        selectedPatient.description.Clear();
 
         if (other.gameObject.CompareTag("Player"))
         {

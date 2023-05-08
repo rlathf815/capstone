@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b4cd2df9ad7624aaaf0a847665ad5f, type: 3}
   m_Name: selected
   m_EditorClassIdentifier: 
-  patientName: 
-  description: []
+  patientName: patient1
+  description:
+  - Remover
+  - transfusion
+  - transfusion
+  - Remover
+  - transfusion

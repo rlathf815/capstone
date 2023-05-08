@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patientName: patient1
   description:
-  - remover
+  - Remover
   - transfusion
   - transfusion
-  - remover
+  - Remover
   - transfusion
