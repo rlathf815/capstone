@@ -895,11 +895,8 @@ MonoBehaviour:
   correctActionSound: {fileID: 8300000, guid: d3fcc09b10851134e92a79679bd60131, type: 3}
   wrongActionSound: {fileID: 8300000, guid: 879e8e3f2eb1c124e9ded6e6418c97d8, type: 3}
   UI: {fileID: 1683727005}
-  objects:
-  - {fileID: 1203775865}
-  - {fileID: 1497526185}
-  - {fileID: 1497526185}
-  - {fileID: 1203775865}
+  objects: []
+  selectedPatient: {fileID: 11400000, guid: ad16620913de2604bb247269faff642b, type: 2}
 --- !u!54 &187461421
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2159,16 +2156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Description
-
-    1. remover
-
-    2. transfuion
-
-    3. transfusion
-
-    4.
-    remover'
+  m_text: -Sample text-
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4668,11 +4656,6 @@ MonoBehaviour:
   hitObject: {fileID: 0}
   DraggingPosition: {x: 0, y: 0, z: 0}
   clickedObject: {x: 0, y: 0, z: 0}
---- !u!1 &1497526185 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: f7cc25bc5eda8d3428a97628900240dc, type: 3}
-  m_PrefabInstance: {fileID: 1685955738}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1504116188
 GameObject:
   m_ObjectHideFlags: 0
@@ -5891,6 +5874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4795266928898060}
   - component: {fileID: 95092961630994442}
+  - component: {fileID: 95092961630994443}
   m_Layer: 0
   m_Name: Clipboard
   m_TagString: Untagged
@@ -6085,3 +6069,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &95092961630994443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685343722310858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b3cd0b960a49b43802df1727b880e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipboard: {fileID: 850716166}
+  selectedPatient: {fileID: 11400000, guid: ad16620913de2604bb247269faff642b, type: 2}

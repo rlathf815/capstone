@@ -9,8 +9,8 @@ public class HeartScript : MonoBehaviour
     private float beat = 0.5f;
     public int success = 0;
     private bool spaced = false;
-    private bool completeGame = false;
 
+    public bool HeartSuccess = false;//CPR씬 불 리턴
     //사운드관련
 
     public AudioClip heartBeat;//박동소리
@@ -77,7 +77,7 @@ public class HeartScript : MonoBehaviour
 
         if(success >= 20)
         {// 20번 박동을 맞추면 통과, bool true되면 씬전환
-            completeGame = true;
+            HeartSuccess = true;
         }
     }
 
