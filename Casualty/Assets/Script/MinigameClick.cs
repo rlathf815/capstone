@@ -8,19 +8,11 @@ public class MinigameClick : MonoBehaviour
     public GameObject hitObject;
     private RaycastHit hit;
 
-
-
     public Vector3 DraggingPosition;
     public Vector3 clickedObject;//드래그 시작한 물체 좌표 저장 , 마우스를 떼면 원래 자리로 돌려놓는것에 쓰임.
     //마우스를 올려놓은 오브젝트를 강조할지, 오브젝트 위치에 이름 ui를 배치할지 고민중.
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
-    }
-    // Update is called once per frame
 
+    // Update is called once per frame
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
