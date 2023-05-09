@@ -9,6 +9,7 @@ public class getDescription : MonoBehaviour
     public TMP_Text clipboard;
     public PatientData selectedPatient;
     private string descriptionString;
+    [SerializeField] public GameObject[] patients;
 
     //foreach (string description in selectedPatient.description)
     // {
@@ -20,6 +21,8 @@ public class getDescription : MonoBehaviour
         descriptionString = string.Join("\n", selectedPatient.description.ToArray());
         Debug.Log(descriptionString);
         clipboard.text = descriptionString;
+
+
     }
 
 }

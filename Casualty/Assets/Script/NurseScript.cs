@@ -11,6 +11,7 @@ public class NurseScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             UI.SetActive(true);
+           
         }
     }
     void OnTriggerExit(Collider other)

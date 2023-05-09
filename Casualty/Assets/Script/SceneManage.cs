@@ -7,6 +7,7 @@ public class SceneManage : MonoBehaviour
 {
     public Canvas ui;
     public PatientData selectedPatient;
+
     void start()
     {
         selectedPatient.description.Clear();

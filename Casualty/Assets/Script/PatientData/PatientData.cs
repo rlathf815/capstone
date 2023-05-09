@@ -6,5 +6,5 @@ public class PatientData : ScriptableObject
 {
     public string patientName;
     public List<string> description;
-    // Add any other relevant fields
+    
 }

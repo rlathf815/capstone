@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionDetector : MonoBehaviour
 {
@@ -8,14 +9,27 @@ public class CollisionDetector : MonoBehaviour
     private Vector3 originPos;
     public AudioClip correctActionSound;
     public AudioClip wrongActionSound;
+    public PatientData selectedPatient;
     [SerializeField] public GameObject[] objects;
     //private bool correct = false;;
     private int index = 0;
     private int max;
-
+    public GameObject UI;
     private AudioSource audioSource;
+
     private void Start()
     {
+        objects = new GameObject[selectedPatient.description.Count];
+        Debug.Log(selectedPatient.description.Count);
+        
+
+        for (int i = 0; i < selectedPatient.description.Count; i++)
+        {
+            string objectName = selectedPatient.description[i];
+            GameObject obj = GameObject.Find(objectName);
+            objects[i] = obj;
+            Debug.Log(obj + "added");
+        }
         audioSource = GetComponent<AudioSource>();
         max = objects.Length;
         //correctMove = objects[index];
@@ -32,7 +46,7 @@ public class CollisionDetector : MonoBehaviour
             //correct = true;
             if (index < max - 1)
                 index++;
-            
+            else UI.SetActive(true);
         }
         else
         {
