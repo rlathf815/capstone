@@ -8,6 +8,7 @@ public class cshOpenDoor : MonoBehaviour
     public float speed = 1f;
     public GameObject LeftDoor;
     public GameObject RightDoor;
+    public float openingSpeed = 0.01f;
     Vector3 LPos;
     Vector3 RPos;
     Vector3 RMove = new Vector3(0.7f, 0, 0);
@@ -27,22 +28,22 @@ public class cshOpenDoor : MonoBehaviour
     {
         if (OnOff == false)
         {
-            if (LeftDoor.transform.position == LPos + LMove && RightDoor.transform.position == RPos + RMove)
+            if (LeftDoor.transform.position != LPos && RightDoor.transform.position != RPos)
             {
-                RightDoor.transform.position = Vector3.MoveTowards(RightDoor.transform.position, RPos, 1);
+                RightDoor.transform.position = Vector3.MoveTowards(RightDoor.transform.position, RPos, openingSpeed);
                 //RightDoor.transform.Translate(LMove);
-                LeftDoor.transform.position = Vector3.MoveTowards(LeftDoor.transform.position, LPos, 1);
+                LeftDoor.transform.position = Vector3.MoveTowards(LeftDoor.transform.position, LPos, openingSpeed);
                 //LeftDoor.transform.Translate(RMove);
             }
 
         }
         if (OnOff == true)
         {
-            if (LeftDoor.transform.position == LPos && RightDoor.transform.position == RPos)
+            if (LeftDoor.transform.position != LPos + LMove && RightDoor.transform.position != RPos + RMove)
             {
-                RightDoor.transform.position = Vector3.MoveTowards(RightDoor.transform.position, RMove + RPos, 1);
+                RightDoor.transform.position = Vector3.MoveTowards(RightDoor.transform.position, RMove + RPos, openingSpeed);
                 //RightDoor.transform.Translate(RMove);
-                LeftDoor.transform.position = Vector3.MoveTowards(LeftDoor.transform.position, LMove + LPos, 1);
+                LeftDoor.transform.position = Vector3.MoveTowards(LeftDoor.transform.position, LMove + LPos, openingSpeed);
                 //LeftDoor.transform.Translate(LMove);
             }
 
