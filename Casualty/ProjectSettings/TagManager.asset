@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Med
+  - Collider
+  - Elevator
+  - ElevatorButtonOpen
+  - ElevatorNumericButton
+  - ElevatorGoButton
+  - StitchImage
+  - PlayerController
+  - AutoDoorDetectArea
   layers:
   - Default
   - TransparentFX
