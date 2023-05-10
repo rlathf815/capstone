@@ -1,69 +1,148 @@
 fileFormatVersion: 2
 guid: 46e59dc105b8f4b4bb306cec83d038f9
-timeCreated: 1540309531
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: body.010
-    100002: clothes.010
-    100004: eye.010
-    100006: head_1.010
-    100008: mask.007
-    100010: //RootNode
-    100012: teeth.009
-    100014: tongue.009
-    400000: body.010
-    400002: clothes.010
-    400004: eye.010
-    400006: head_1.010
-    400008: mask.007
-    400010: //RootNode
-    400012: teeth.009
-    400014: tongue.009
-    2300000: body.010
-    2300002: clothes.010
-    2300004: eye.010
-    2300006: head_1.010
-    2300008: mask.007
-    2300010: teeth.009
-    2300012: tongue.009
-    3300000: body.010
-    3300002: clothes.010
-    3300004: eye.010
-    3300006: head_1.010
-    3300008: mask.007
-    3300010: teeth.009
-    3300012: tongue.009
-    4300000: body.010
-    4300002: eye.010
-    4300004: teeth.009
-    4300006: tongue.009
-    4300008: clothes.010
-    4300010: head_1.010
-    4300012: mask.007
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: body.010
+  - first:
+      1: 100002
+    second: clothes.010
+  - first:
+      1: 100004
+    second: eye.010
+  - first:
+      1: 100006
+    second: head_1.010
+  - first:
+      1: 100008
+    second: mask.007
+  - first:
+      1: 100010
+    second: //RootNode
+  - first:
+      1: 100012
+    second: teeth.009
+  - first:
+      1: 100014
+    second: tongue.009
+  - first:
+      4: 400000
+    second: body.010
+  - first:
+      4: 400002
+    second: clothes.010
+  - first:
+      4: 400004
+    second: eye.010
+  - first:
+      4: 400006
+    second: head_1.010
+  - first:
+      4: 400008
+    second: mask.007
+  - first:
+      4: 400010
+    second: //RootNode
+  - first:
+      4: 400012
+    second: teeth.009
+  - first:
+      4: 400014
+    second: tongue.009
+  - first:
+      23: 2300000
+    second: body.010
+  - first:
+      23: 2300002
+    second: clothes.010
+  - first:
+      23: 2300004
+    second: eye.010
+  - first:
+      23: 2300006
+    second: head_1.010
+  - first:
+      23: 2300008
+    second: mask.007
+  - first:
+      23: 2300010
+    second: teeth.009
+  - first:
+      23: 2300012
+    second: tongue.009
+  - first:
+      33: 3300000
+    second: body.010
+  - first:
+      33: 3300002
+    second: clothes.010
+  - first:
+      33: 3300004
+    second: eye.010
+  - first:
+      33: 3300006
+    second: head_1.010
+  - first:
+      33: 3300008
+    second: mask.007
+  - first:
+      33: 3300010
+    second: teeth.009
+  - first:
+      33: 3300012
+    second: tongue.009
+  - first:
+      43: 4300000
+    second: body.010
+  - first:
+      43: 4300002
+    second: eye.010
+  - first:
+      43: 4300004
+    second: teeth.009
+  - first:
+      43: 4300006
+    second: tongue.009
+  - first:
+      43: 4300008
+    second: clothes.010
+  - first:
+      43: 4300010
+    second: head_1.010
+  - first:
+      43: 4300012
+    second: mask.007
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 1
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -71,28 +150,89 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: pose_11(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: body.010
+      parentName: pose_11(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.08843223, y: 0.08843223, z: 0.08843223}
+    - name: eye.010
+      parentName: pose_11(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 3.5527137e-15, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: teeth.009
+      parentName: pose_11(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.08843223, y: 0.08843223, z: 0.08843223}
+    - name: tongue.009
+      parentName: pose_11(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.08843223, y: 0.08843223, z: 0.08843223}
+    - name: clothes.010
+      parentName: pose_11(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.08843223, y: 0.08843223, z: 0.08843223}
+    - name: head_1.010
+      parentName: pose_11(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 3.5527137e-15, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mask.007
+      parentName: pose_11(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 3.5527137e-15, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -100,14 +240,18 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
