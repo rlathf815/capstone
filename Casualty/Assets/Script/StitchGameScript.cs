@@ -12,6 +12,7 @@ public class StitchGameScript : MonoBehaviour
     private Vector3 originPos;
     private bool Cut_start = false;
     private bool isCut = false;
+    public GameObject Guts;
 
     //private GameObject imageObj;
 
@@ -43,6 +44,7 @@ public class StitchGameScript : MonoBehaviour
             Debug.Log("Cut");
             audioSource.PlayOneShot(cuttingSound);
             Cut_start = false;
+            Guts.SetActive(true);
         }
     }
 
