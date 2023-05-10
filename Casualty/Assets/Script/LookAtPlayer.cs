@@ -54,6 +54,12 @@ public class LookAtPlayer : MonoBehaviour
             velocity = -transform.forward * speed;
         }
 
+        if (transform.position.x <= -132.5f)
+        {//-133 x포지션이 귀신이 문앞에 도달하는건데, 가끔 문을 침범함. 고로 아예 멈추게 하였음.
+            //추가로 이 멈춘상태에서 적절한 애니메이션이 있는지도 찾아볼 예정임.
+            velocity = transform.forward * 0;
+        }
+
         Rigidbody rigidbody = GetComponent<Rigidbody>();
         rigidbody.velocity = new Vector3(velocity.x, rigidbody.velocity.y, velocity.z);
 
