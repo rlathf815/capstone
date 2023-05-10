@@ -9,10 +9,7 @@ public class CollisionDetector : MonoBehaviour
     private Vector3 originPos;
     public AudioClip correctActionSound;
     public AudioClip wrongActionSound;
-<<<<<<< Updated upstream
-=======
     public PatientData selectedPatient;
->>>>>>> Stashed changes
     [SerializeField] public GameObject[] objects;
     //private bool correct = false;;
     private int index = 0;
@@ -49,11 +46,7 @@ public class CollisionDetector : MonoBehaviour
             //correct = true;
             if (index < max - 1)
                 index++;
-<<<<<<< Updated upstream
-            
-=======
             else UI.SetActive(true);
->>>>>>> Stashed changes
         }
         else
         {

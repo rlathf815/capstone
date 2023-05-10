@@ -894,18 +894,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctActionSound: {fileID: 8300000, guid: d3fcc09b10851134e92a79679bd60131, type: 3}
   wrongActionSound: {fileID: 8300000, guid: 879e8e3f2eb1c124e9ded6e6418c97d8, type: 3}
-<<<<<<< Updated upstream
-  UI: {fileID: 1683727005}
-  objects: []
-  selectedPatient: {fileID: 11400000, guid: ad16620913de2604bb247269faff642b, type: 2}
-=======
   selectedPatient: {fileID: 11400000, guid: ad16620913de2604bb247269faff642b, type: 2}
   objects:
   - {fileID: 1156157722791654}
   - {fileID: 1156157761178403}
   - {fileID: 1640336047}
   UI: {fileID: 405140915}
->>>>>>> Stashed changes
 --- !u!54 &187461421
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5239,14 +5233,11 @@ MonoBehaviour:
   hitObject: {fileID: 0}
   DraggingPosition: {x: 0, y: 0, z: 0}
   clickedObject: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!4 &1420381785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6000112841199638967, guid: c02806eef8374bb4ca2c1d12e5c46f29, type: 3}
   m_PrefabInstance: {fileID: 770293515}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &1504116188
 GameObject:
   m_ObjectHideFlags: 0
@@ -7166,7 +7157,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipboard: {fileID: 850716166}
   selectedPatient: {fileID: 11400000, guid: ad16620913de2604bb247269faff642b, type: 2}
-<<<<<<< Updated upstream
-=======
   patients: []
->>>>>>> Stashed changes

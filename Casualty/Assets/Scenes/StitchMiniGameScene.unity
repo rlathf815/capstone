@@ -482,8 +482,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-<<<<<<< Updated upstream
-=======
 --- !u!1 &96029571
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +531,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1001 &110359911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -863,14 +860,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-<<<<<<< Updated upstream
-=======
 --- !u!4 &245476258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4525622979126458, guid: a9481ace63a4a8f40a6815773e8d1792, type: 3}
   m_PrefabInstance: {fileID: 255029392}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1001 &255029392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2492,14 +2486,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137771961}
   m_Mesh: {fileID: 4300002, guid: 3f483e7d952a90f4f8174a7c779fe462, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!4 &1147622255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4817038065195840, guid: 73cb85ff2420e5849808e39d4e8780de, type: 3}
   m_PrefabInstance: {fileID: 1878463341}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &1178157641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2682,11 +2673,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< Updated upstream
-  m_RootOrder: 44
-=======
   m_RootOrder: 27
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1183020487
 CapsuleCollider:

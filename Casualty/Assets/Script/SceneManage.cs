@@ -7,10 +7,7 @@ public class SceneManage : MonoBehaviour
 {
     public Canvas ui;
     public PatientData selectedPatient;
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
     void start()
     {
         selectedPatient.description.Clear();
