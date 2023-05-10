@@ -6,5 +6,9 @@ public class PatientData : ScriptableObject
 {
     public string patientName;
     public List<string> description;
+<<<<<<< Updated upstream
     // Add any other relevant fields
+=======
+    
+>>>>>>> Stashed changes
 }

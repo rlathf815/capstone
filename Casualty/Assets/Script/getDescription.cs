@@ -9,6 +9,10 @@ public class getDescription : MonoBehaviour
     public TMP_Text clipboard;
     public PatientData selectedPatient;
     private string descriptionString;
+<<<<<<< Updated upstream
+=======
+    [SerializeField] public GameObject[] patients;
+>>>>>>> Stashed changes
 
     //foreach (string description in selectedPatient.description)
     // {
@@ -20,6 +24,11 @@ public class getDescription : MonoBehaviour
         descriptionString = string.Join("\n", selectedPatient.description.ToArray());
         Debug.Log(descriptionString);
         clipboard.text = descriptionString;
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
     }
 
 }
