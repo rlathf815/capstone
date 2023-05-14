@@ -9,6 +9,7 @@ public class cshOpenDoor : MonoBehaviour
     public GameObject LeftDoor;
     public GameObject RightDoor;
     public float openingSpeed = 0.01f;
+
     Vector3 LPos;
     Vector3 RPos;
     Vector3 RMove = new Vector3(0.7f, 0, 0);
@@ -17,10 +18,8 @@ public class cshOpenDoor : MonoBehaviour
     void Start()
     {
         OnOff = false;
-
         LPos = LeftDoor.transform.position;
         RPos = RightDoor.transform.position;
-
     }
 
     // Update is called once per frame
@@ -35,7 +34,6 @@ public class cshOpenDoor : MonoBehaviour
                 LeftDoor.transform.position = Vector3.MoveTowards(LeftDoor.transform.position, LPos, openingSpeed);
                 //LeftDoor.transform.Translate(RMove);
             }
-
         }
         if (OnOff == true)
         {
@@ -46,7 +44,6 @@ public class cshOpenDoor : MonoBehaviour
                 LeftDoor.transform.position = Vector3.MoveTowards(LeftDoor.transform.position, LMove + LPos, openingSpeed);
                 //LeftDoor.transform.Translate(LMove);
             }
-
         }
     }
 }
