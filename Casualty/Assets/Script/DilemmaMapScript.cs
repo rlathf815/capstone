@@ -28,6 +28,13 @@ public class DilemmaMapScript : MonoBehaviour
     {
         speed = rb.velocity.magnitude;
         float distance = Mathf.Abs(transform.position.x - player.position.x);
+
+        /*
+        if (Player.transform.position.x == -15)
+        {
+            
+        }
+        */
         
         if(transform.position.x >= -120)
         {
