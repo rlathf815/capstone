@@ -18,6 +18,10 @@ public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
 
+    public AudioClip walkingSound;
+
+    private AudioSource audioSource;
+
     #region Camera Movement Variables
 
     public Camera playerCamera;
@@ -151,7 +155,9 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        if(lockCursor)
+        audioSource = GetComponent<AudioSource>();
+
+        if (lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -362,6 +368,22 @@ public class FirstPersonController : MonoBehaviour
         {
             HeadBob();
         }
+
+        if (isWalking)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        if (!isWalking)
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Play(0);
+            }
+        }
+
     }
 
     void FixedUpdate()
