@@ -13,6 +13,7 @@ TagManager:
   - StitchImage
   - PlayerController
   - AutoDoorDetectArea
+  - Corpse
   layers:
   - Default
   - TransparentFX
