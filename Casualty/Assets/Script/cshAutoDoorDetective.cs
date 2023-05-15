@@ -12,7 +12,10 @@ public class cshAutoDoorDetective : MonoBehaviour
         {
             col.gameObject.GetComponent<cshOpenDoor>().OnOff = true;
             audioSource = col.gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
     }
     private void OnTriggerExit(Collider col)
@@ -21,7 +24,10 @@ public class cshAutoDoorDetective : MonoBehaviour
         {
             col.gameObject.GetComponent<cshOpenDoor>().OnOff = false;
             audioSource = col.gameObject.GetComponent<AudioSource>();
-            audioSource.Play();
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
     }
 }
