@@ -60,7 +60,7 @@ public class FirstPersonController : MonoBehaviour
     #region Movement Variables
 
     public bool playerCanMove = true;
-    public float walkSpeed = 5f;
+    public float walkSpeed = 4f;
     public float maxVelocityChange = 10f;
 
     // Internal Variables
@@ -71,7 +71,7 @@ public class FirstPersonController : MonoBehaviour
     public bool enableSprint = true;
     public bool unlimitedSprint = false;
     public KeyCode sprintKey = KeyCode.LeftShift;
-    public float sprintSpeed = 7f;
+    public float sprintSpeed = 6f;
     public float sprintDuration = 5f;
     public float sprintCooldown = .5f;
     public float sprintFOV = 80f;
@@ -86,6 +86,7 @@ public class FirstPersonController : MonoBehaviour
     public float sprintBarHeightPercent = .015f;
 
     // Internal Variables
+    private float sprintSoundSpeed;
     private CanvasGroup sprintBarCG;
     private bool isSprinting = false;
     private float sprintRemaining;
@@ -155,6 +156,7 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
+        sprintSoundSpeed = sprintSpeed / walkSpeed;
         audioSource = GetComponent<AudioSource>();
 
         if (lockCursor)
@@ -424,6 +426,8 @@ public class FirstPersonController : MonoBehaviour
                 {
                     isSprinting = true;
 
+                    audioSource.pitch = sprintSoundSpeed;
+
                     if (isCrouched)
                     {
                         Crouch();
@@ -441,6 +445,8 @@ public class FirstPersonController : MonoBehaviour
             else
             {
                 isSprinting = false;
+
+                audioSource.pitch = 1.0f;
 
                 if (hideBarWhenFull && sprintRemaining == sprintDuration)
                 {
