@@ -10,7 +10,7 @@ public class StitchgameClear : MonoBehaviour
 
     void start()
     {
-        
+
     }
     
     void Update()
