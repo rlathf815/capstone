@@ -11,26 +11,24 @@ public class AIController : MonoBehaviour
     public Animator aiAnim;
     public float walkSpeed, chaseSpeed, idleTime, minIdleTime, maxIdleTime, sightDistance, catchDistance
         ,chaseTime, minChaseTime, maxChaseTime,jumpscareTime, screamTime;
-  
-
-    public int destinationAmount;
-    public bool walking, chasing,screaming;
+    public bool walking, chasing, screaming;
+    public int targetDestinationIndex, destinationAmount;
     public Transform player;
     public Vector3 rayCastOffset;
-    public string deathScene;
 
 
 
     private Transform currentDest;
     private Vector3 dest;
-    private int randNum, randNum2;
+    private int rand;
 
     private void Start()
     {
         walking = true;
-        screaming = true;
-        randNum = Random.Range(0, destinationAmount);
-        currentDest = destinations[randNum];
+        //screaming = true;
+        targetDestinationIndex = 0;
+        currentDest = destinations[targetDestinationIndex];
+        destinationAmount = 9;
     }
     private void Update()
     {
@@ -44,14 +42,9 @@ public class AIController : MonoBehaviour
                 walking=false;
                 StopCoroutine("stayIdle");
                 StopCoroutine("chaseRoutine");
+                //StartCoroutine("scream");
                 StartCoroutine("chaseRoutine");
-                aiAnim.ResetTrigger("walk");
-                aiAnim.ResetTrigger("idle");
-                aiAnim.ResetTrigger("scream");
-                Debug.Log("scream");
-                StopCoroutine("scream");
-                Debug.Log("sprint");
-                aiAnim.SetTrigger("sprint");
+                chasing = true;
             }
         }
        
@@ -60,9 +53,15 @@ public class AIController : MonoBehaviour
             dest = player.position;
             ai.destination = dest;
             ai.speed = chaseSpeed;
+            aiAnim.ResetTrigger("walk");
+            aiAnim.ResetTrigger("idle");
+            aiAnim.SetTrigger("sprint");
             // 잡혔을 때 구현하려면 사용
             //if (ai.remainingDistance <= catchDistance)
             //{
+            //    player.gameObject.SetActive(false);
+            //    aiAnim.ResetTrigger("walk");
+            //    aiAnim.ResetTrigger("idle");
             //    aiAnim.ResetTrigger("sprint");
             //    aiAnim.SetTrigger("jumpscare");
             //    StartCoroutine("captureRoutine");
@@ -74,43 +73,61 @@ public class AIController : MonoBehaviour
             dest = currentDest.position;
             ai.destination = dest;
             ai.speed = walkSpeed;
+            aiAnim.ResetTrigger("sprint");
+            aiAnim.ResetTrigger("idle");
+            aiAnim.SetTrigger("walk");
             if (ai.remainingDistance <= ai.stoppingDistance)
             {
-                randNum2 = Random.Range(0, 2);
-                if (randNum2 == 0) // 다음 목적지
-                {
-                    randNum = Random.Range(0, destinationAmount);
-                    currentDest = destinations[randNum];
-                }
-                else if (randNum2 == 1) 
-                {
-                    aiAnim.ResetTrigger("walk");
-                    aiAnim.SetTrigger("idle");
-                    ai.speed = 0;
-                    StopCoroutine("stayIdle");
-                    StartCoroutine("stayIdle");
-                    walking = false;
-                }
+                aiAnim.ResetTrigger("sprint");
+                aiAnim.ResetTrigger("walk");
+                aiAnim.SetTrigger("idle");
+                ai.speed = 0;
+                
+                StopCoroutine("stayIdle");
+                StartCoroutine("stayIdle");
+                walking = false;
             }
         }
     }
-    IEnumerator scream()
+    private void SetNextDestination()
     {
-        yield return new WaitForSeconds(screamTime);
-        aiAnim.ResetTrigger("idle");
-        aiAnim.ResetTrigger("walk");
         
-        aiAnim.SetTrigger("scream");
+        if (targetDestinationIndex <= destinationAmount)
+        {
+           // Debug.Log("SetNextDestination()-> next index: " + targetDestinationIndex);
+            currentDest = destinations[targetDestinationIndex];
+            
+        }
+        else // overflow, dest index reset
+        {
+          //  Debug.Log("SetNextDestination()-> targetDestinationIndex overflow");
+            targetDestinationIndex = 0;
+            currentDest = destinations[targetDestinationIndex];
+        }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (targetDestinationIndex <= destinationAmount)
+            targetDestinationIndex++;
+        else
+            targetDestinationIndex = 0;
+    }
+    //IEnumerator scream()
+    //{
+    //    yield return new WaitForSeconds(screamTime);
+    //    aiAnim.ResetTrigger("idle");
+    //    aiAnim.ResetTrigger("walk");
+
+    //    aiAnim.SetTrigger("scream");
+    //}
     IEnumerator stayIdle()
     {
         idleTime = Random.Range(minIdleTime, maxIdleTime);
         yield return new WaitForSeconds(idleTime);
         walking = true;
-        randNum = Random.Range(0, destinationAmount);
-        currentDest = destinations[randNum];
-        aiAnim.ResetTrigger("idle");
-        aiAnim.SetTrigger("walk");
+        
+        SetNextDestination();
+
     }
     IEnumerator chaseRoutine()
     {
@@ -118,10 +135,9 @@ public class AIController : MonoBehaviour
         yield return new WaitForSeconds(chaseTime);
         walking = true;
         chasing = false;
-        randNum = Random.Range(0, destinationAmount);
-        currentDest = destinations[randNum];
-        aiAnim.ResetTrigger("sprint");
-        aiAnim.SetTrigger("walk");
+        
+        SetNextDestination();
+
     }
     // 잡혔을때 구현하려면 사용
     //IEnumerator captureRoutine()
