@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   list: []
-  initial: 0
+  initial: 1
   patient1: 1
   patient2: 1
   patient3: 1
   dillemaPatient: 0
+  dillemaRunOver: 0
