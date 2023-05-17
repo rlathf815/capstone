@@ -10,7 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c835284627c78346a9735f53b964010, type: 3}
-  m_Name: New Shared Data
+  m_Name: Patients
   m_EditorClassIdentifier: 
   name: 
   list: []
+  initial: 0
+  patient1: 1
+  patient2: 1
+  patient3: 1
+  dillemaPatient: 0
