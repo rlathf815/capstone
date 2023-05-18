@@ -15,4 +15,8 @@ public class SharedData : ScriptableObject
 
     public int dillemaPatient;      //A ->0, B->1
 
+    public bool dillemaRunOver = false; //딜레마씬에서 잡히거나, 엘리베이터에 도달했을 때 반환되는 것.
+    //true면 잡혔거나 엘리베이터에 도달한 것.
+
+
 }

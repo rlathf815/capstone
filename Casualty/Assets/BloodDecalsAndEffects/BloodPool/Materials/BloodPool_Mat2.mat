@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: BloodPool_Mat2
   m_Shader: {fileID: 4800000, guid: c2630e0b0d44f7045946eac307580599, type: 3}
   m_ShaderKeywords: 
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BloodSpillArea_A_normal:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 450b316442dfd64429a3d86f50f6816e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BloodSpillArea_Mask_A:
@@ -79,6 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AlphaCutoff: 0.5
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _Depth1: 3.6
@@ -92,6 +94,7 @@ Material:
     - _FadeRange: 0.05
     - _FalloffArea1: 85.9
     - _FalloffArea2: 92.3
+    - _FinalNormal_Power: 1
     - _Float2: 2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
