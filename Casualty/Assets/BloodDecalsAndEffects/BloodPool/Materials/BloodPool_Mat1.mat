@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: BloodPool_Mat1
   m_Shader: {fileID: 4800000, guid: c2630e0b0d44f7045946eac307580599, type: 3}
   m_ShaderKeywords: 
@@ -79,10 +80,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AlphaCutoff: 0.5
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _Depth1: 0.65
-    - _Depth2: 0.4
+    - _Depth1: 0.92
+    - _Depth2: 2.56
     - _DepthSense: 0.03
     - _DepthSense1: 2.46
     - _DepthSense2: 3.68
@@ -92,6 +94,7 @@ Material:
     - _FadeRange: -0.02
     - _FalloffArea1: 85.9
     - _FalloffArea2: 83.6
+    - _FinalNormal_Power: 1.4
     - _Float2: 2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
