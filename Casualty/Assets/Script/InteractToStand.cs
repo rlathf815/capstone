@@ -78,5 +78,9 @@ public class InteractToStand : MonoBehaviour
         dialog6.SetActive(true);
         yield return new WaitForSeconds(2f);
         dialog6.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("ChooseOne");
+        
     }
 }
