@@ -15,4 +15,6 @@ public class SharedData : ScriptableObject
 
     public int dillemaPatient;      //A ->0, B->1
 
+    public bool dillemaRunOver= false; // 딜레마씬의 게임오버(성공이든아니든)조건 = true
+
 }
