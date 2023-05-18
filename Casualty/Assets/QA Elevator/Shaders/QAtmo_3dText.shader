@@ -1,72 +1,48 @@
 // Made with Amplify Shader Editor
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "QAtmo/QAtmo_3dTextURP"
+Shader "QAtmo/QAtmo_3dText"
 {
-    Properties
-    {
-        _MaskClipValue("Mask Clip Value", Float) = 0.5
-        _Font("Font", 2D) = "white" {}
-        _EmissionIntensity("Emission Intensity", Float) = 1
-    }
+	Properties
+	{
+		[HideInInspector] __dirty( "", Int ) = 1
+		_MaskClipValue( "Mask Clip Value", Float ) = 0.5
+		_Font("Font", 2D) = "white" {}
+		_EmissionIntensity("Emission Intensity", Float) = 1
+		[HideInInspector] _texcoord( "", 2D ) = "white" {}
+	}
 
-        SubShader
-        {
-            Tags { "RenderType" = "TransparentCutout" "Queue" = "AlphaTest+0" "IsEmissive" = "true" }
+	SubShader
+	{
+		Tags{ "RenderType" = "TransparentCutout"  "Queue" = "AlphaTest+0" "IsEmissive" = "true"  }
+		Cull Back
+		CGPROGRAM
+		#pragma target 3.0
+		#pragma surface surf Standard keepalpha noshadow 
+		struct Input
+		{
+			float4 vertexColor : COLOR;
+			float2 uv_texcoord;
+		};
 
-            Pass
-            {
-                Tags { "LightMode" = "UniversalForward" }
-                HLSLPROGRAM
-                #pragma vertex vert
-                #pragma fragment frag
-                #pragma multi_compile_fog
+		uniform float _EmissionIntensity;
+		uniform sampler2D _Font;
+		uniform float4 _Font_ST;
+		uniform float _MaskClipValue = 0.5;
 
-                #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+		void surf( Input i , inout SurfaceOutputStandard o )
+		{
+			float4 temp_output_1_0 = i.vertexColor;
+			o.Albedo = temp_output_1_0.rgb;
+			o.Emission = ( i.vertexColor * _EmissionIntensity ).rgb;
+			o.Alpha = 1;
+			float2 uv_Font = i.uv_texcoord * _Font_ST.xy + _Font_ST.zw;
+			clip( ( i.vertexColor.a * tex2D( _Font, uv_Font ).a ) - _MaskClipValue );
+		}
 
-                struct Attributes
-                {
-                    float4 positionOS   : POSITION;
-                    float2 uv           : TEXCOORD0;
-                };
-
-                struct Varyings
-                {
-                    float4 positionCS   : SV_POSITION;
-                    float2 uv           : TEXCOORD0;
-                };
-
-                TEXTURE2D(_Font);
-                SAMPLER(sampler_Font);
-                float4 _Font_ST;
-                float _EmissionIntensity;
-                float _MaskClipValue;
-
-                Varyings vert(Attributes v)
-                {
-                    Varyings o;
-                    UNITY_SETUP_INSTANCE_ID(v);
-                    UNITY_TRANSFER_INSTANCE_ID(v, o);
-                    o.positionCS = TransformObjectToHClip(v.positionOS.xyz);
-                    o.uv = TRANSFORM_TEX(v.uv, _Font);
-                    return o;
-                }
-
-                half4 frag(Varyings i) : SV_Target
-                {
-                    half4 color = SAMPLE_TEXTURE2D(_Font, sampler_Font, i.uv);
-                    color.rgb = half3(1, 1, 1); // hard code the color to light green
-                    half emission = _EmissionIntensity * color.a;
-                    color.rgb = color.rgb * emission;
-                    clip(color.a - _MaskClipValue);
-                    return color;
-                }
-                ENDHLSL
-            }
-        }
+		ENDCG
+	}
+	CustomEditor "ASEMaterialInspector"
 }
-
-
-
 /*ASEBEGIN
 Version=12001
 202;255;1301;662;1086.001;510.4003;1.3;True;True
