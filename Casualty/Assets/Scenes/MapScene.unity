@@ -3266,9 +3266,6 @@ MonoBehaviour:
   sharedData: {fileID: 11400000, guid: 66d00ea5a7a98314197f974c9ca10819, type: 2}
   subtitle: {fileID: 250547087}
   canvasGroup: {fileID: 250547089}
-  audioClip: {fileID: 8300000, guid: 4219176ebf6ebb44e928b13c7d8d8430, type: 3}
-  smartphone: {fileID: 860157846}
-  smartphoneAnimator: {fileID: 860157848}
 --- !u!114 &550448850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5016,16 +5013,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4497856686520580, guid: f240a2e3ffd70794e8442e2a37a05957, type: 3}
   m_PrefabInstance: {fileID: 855632034}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &860157846 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 4e9bb637798979a4ca9e30741b7e2c77, type: 3}
-  m_PrefabInstance: {fileID: 1470455429}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &860157848 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9500000, guid: 4e9bb637798979a4ca9e30741b7e2c77, type: 3}
-  m_PrefabInstance: {fileID: 1470455429}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &876832187 stripped
 GameObject:
