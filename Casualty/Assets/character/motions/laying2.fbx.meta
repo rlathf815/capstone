@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5bb297fbd442ee34298a8eb135d88a07
+guid: bd9979da56712304dbecc2b4846f89ae
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Laying Idle
+      name: mixamo.com
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -50,9 +50,9 @@ ModelImporter:
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -526,13 +526,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Ch02_nonPBR@Laying Idle(Clone)
+    - name: laying2(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Hips
-      parentName: Ch02_nonPBR@Laying Idle(Clone)
+      parentName: laying2(Clone)
       position: {x: -0.0001755774, y: 0.9929315, z: -0.017213263}
       rotation: {x: 0.056761276, y: -0.025226085, z: -0.00074881536, w: 0.99806875}
       scale: {x: 1, y: 1, z: 1}
