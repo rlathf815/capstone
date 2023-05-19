@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChooseOne.unity
     guid: 9c91bfa85fa7823498e0d94b2b65ed5a
+  - enabled: 1
+    path: Assets/Scenes/HorrorScene.unity
+    guid: 80985b3519d634f4891a7642dcc4b39a
   m_configObjects: {}
