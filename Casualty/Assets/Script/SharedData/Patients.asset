@@ -19,3 +19,4 @@ MonoBehaviour:
   patient2: 1
   patient3: 1
   dillemaPatient: 0
+  dillemaRunOver: 0
