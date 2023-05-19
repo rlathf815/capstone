@@ -7,7 +7,7 @@ public class StitchgameClear : MonoBehaviour
 {
     public GameObject ui;
     public GameObject gut;
-
+    public SharedData sharedData;
     void start()
     {
 
@@ -28,7 +28,8 @@ public class StitchgameClear : MonoBehaviour
     IEnumerator LoadMapSceneWithDelay() //Coroutine 사용하여 씬 전환 전 잠시 딜레이
     {
         yield return new WaitForSeconds(2.0f);
-
-        SceneManager.LoadScene("MapScene");
-    }
+        if (sharedData.dillemaPatient = 0)
+            SceneManager.LoadScene("MapScene");
+        else
+            SceneManager.LoadScene("ChooseOneScene");
 }

@@ -17,6 +17,8 @@ public class InteractToStand : MonoBehaviour
     public GameObject dialog4;
     public GameObject dialog5;
     public GameObject dialog6;
+    public CanvasGroup canvasGroup;
+    public GameObject blackout;
 
     // public KeyCode standUpKey = KeyCode.E;
 
@@ -79,7 +81,20 @@ public class InteractToStand : MonoBehaviour
         yield return new WaitForSeconds(2f);
         dialog6.SetActive(false);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
+
+        blackout.SetActive(true);
+        canvasGroup.alpha = 0f;
+        yield return new WaitForSeconds(1f); 
+
+       
+        float fadeDuration = 0.5f; 
+        while (canvasGroup.alpha < 1f)
+        {
+            canvasGroup.alpha += Time.deltaTime / fadeDuration;
+            yield return null;
+        }
+        canvasGroup.alpha = 1f; 
         SceneManager.LoadScene("ChooseOne");
         
     }

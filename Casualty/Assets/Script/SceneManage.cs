@@ -76,7 +76,7 @@ public class SceneManage : MonoBehaviour
         yield return new WaitForSeconds(2f);
         smartphoneAnimator.SetBool("isDelayed", true);
         yield return new WaitForSeconds(2f);
-
+        
         audioSource.Stop();
         smartphone.SetActive(false);
 
