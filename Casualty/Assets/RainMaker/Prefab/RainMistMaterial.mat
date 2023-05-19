@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: RainMistMaterial
-  m_Shader: {fileID: 4800000, guid: 0b828cb759e39534cab22fd7fa5d2982, type: 3}
+  m_Shader: {fileID: 4800000, guid: 34c9bc3ec83be1149be66150c4866b48, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 5
@@ -59,6 +59,7 @@ Material:
     m_Ints: []
     m_Floats:
     - PixelSnap: 0
+    - _AmbientLightMultiplier: 0.25
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1

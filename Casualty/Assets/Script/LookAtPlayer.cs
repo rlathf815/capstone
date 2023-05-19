@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class LookAtPlayer : MonoBehaviour
 {
-    public SharedData sharedData;//쉐어드 데이터.
-
     public Transform playerTransform;
     public float distance = 5.0f;
     public float speed = 5.0f;
-    public float minDistance = 1.25f;//죽는거리
-    public float maxDistance = 2.0f;//일정거리
+    public float minDistance = 0.5f;//얼마나 붙어올지
+    public float maxDistance = 1.0f;//일정거리
     public Vector3 velocity;
     private Animator animator;
     public float currentDistance;
 
-    public bool triggerGhost = false;//귀신이 작동하게되는 선
+    public SharedData sharedData;//쉐어드 데이터.
+    public bool triggerGhost = false;//추격시작
 
     private float timer;
 
     public AudioSource audioSource;
     public AudioClip audioClip;
-    public AudioClip Jumpscare_sound;
 
     public GameObject Player;
     private Rigidbody rb;
@@ -30,23 +28,14 @@ public class LookAtPlayer : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         animator.applyRootMotion = true;
-        sharedData.dillemaRunOver = false; // 딜레마씬 입장씨 한번 초기화
 
         rb = Player.GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        if(Player.transform.position.x > -24)
-        {
-            //audioSource.PlayOneShot(Jumpscare_sound); 소리가 겹쳐나서 보류
-            triggerGhost = true;
-            //sharedData.dillemaRunOver = true;
 
-            //계단이 보이는곳까지가면 귀신 활성화
-        }
-
-        if (triggerGhost)
+        if (Player.transform.position.x > -26)
         {
             // 플레이어 방향을 바라보도록 회전
             Vector3 direction = playerTransform.position - transform.position;
@@ -64,19 +53,8 @@ public class LookAtPlayer : MonoBehaviour
                 velocity = transform.forward * speed;
             }
             else if (currentDistance < minDistance)
-            {
-                Debug.Log("close");
-                System.Reflection.FieldInfo field = sharedData.GetType().GetField("dillemaRunOver");
-                if (field != null && field.FieldType == typeof(bool))
-                {
-                    bool currentValue = (bool)field.GetValue(sharedData);
-                    if (!currentValue)
-                    {
-                        field.SetValue(sharedData, true);
-                        Debug.Log("Dead");
-                    }
-                }
-                // sharedData.dillemaRunOver = true;
+            {//잡힘.
+                sharedData.dillemaRunOver = true;
                 velocity = -transform.forward * speed;
             }
 
@@ -101,26 +79,6 @@ public class LookAtPlayer : MonoBehaviour
             }
         }
     }
-
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            System.Reflection.FieldInfo field = sharedData.GetType().GetField("dillemaRunOver");
-            if (field != null && field.FieldType == typeof(bool))
-            {
-                bool currentValue = (bool)field.GetValue(sharedData);
-                if (!currentValue)
-                {
-                    field.SetValue(sharedData, true);
-                    Debug.Log("Dead");
-                }
-            }//닿으면 데이터전달.
-            //아직 점프스케어 적용못함.
-        }
-    }
-    */
 
 
 }

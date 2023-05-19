@@ -6,7 +6,6 @@ public class DilemmaMapScript : MonoBehaviour
 {
     public GameObject Elevator;
     public SharedData sharedData;//쉐어드 데이터.
-    public GameObject ghost;
     public LookAtPlayer lookAtPlayer;
 
     //public Transform ElevatorPos;
@@ -24,7 +23,7 @@ public class DilemmaMapScript : MonoBehaviour
     void Start()
     {
         rb = Player.GetComponent<Rigidbody>();
-        lookAtPlayer = ghost.GetComponent<LookAtPlayer>();
+        lookAtPlayer = GetComponent<LookAtPlayer>();
     }
 
     // Update is called once per frame
@@ -61,7 +60,7 @@ public class DilemmaMapScript : MonoBehaviour
             }
 
 
-            if (Player.transform.position.x < -134)
+            if (Player.transform.position.x < -134 && sharedData.dillemaRunOver == false)
             {//엘리베이터 안에 들어갔을 때
 
                 sharedData.dillemaRunOver = true;
