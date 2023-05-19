@@ -53,7 +53,7 @@ public class SceneManage : MonoBehaviour
 
             }
         }
-        if (sharedData.patient1 && sharedData.patient2 && sharedData.patient3 && !hasCoroutineStarted)
+        if (sharedData.patient1 && sharedData.patient2 && sharedData.patient3 && !hasCoroutineStarted && sharedData.dillemaPatient==0)
         {
             Debug.Log("All clear");
 
