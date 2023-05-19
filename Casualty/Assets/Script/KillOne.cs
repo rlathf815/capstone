@@ -7,6 +7,9 @@ public class KillOne : MonoBehaviour
     public SharedData sharedData;
     public GameObject Alex;
     public GameObject Sarah;
+    public GameObject SarahCorpse;
+    public GameObject AlexCorpse;
+
     public GameObject UI;
    
     public AudioClip Heartbeat;
@@ -37,11 +40,14 @@ public class KillOne : MonoBehaviour
         else if(sharedData.dillemaPatient == 1) //saved Alex -> Sarah killed
         {
             Sarah.SetActive(false);
+            SarahCorpse.SetActive(true);
             UI.SetActive(false);
         }
         else if(sharedData.dillemaPatient == 2 ) //saved Sarah -> Alex killed
         {
             Alex.SetActive(false);
+            AlexCorpse.SetActive(true);
+
             UI.SetActive(false);
 
         }
