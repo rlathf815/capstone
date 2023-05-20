@@ -15,6 +15,7 @@ TagManager:
   - AutoDoorDetectArea
   - Corpse
   - LetterLight
+  - Destination
   layers:
   - Default
   - TransparentFX

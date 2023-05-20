@@ -4,12 +4,13 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: DripMaterial_Programmable
   m_Shader: {fileID: 4800000, guid: 0f4c058d98ad6e347b0fe9f46bc6c2a0, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -77,6 +78,7 @@ Material:
     - _Cutoff: 0.11
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EmissiveLevel: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -84,6 +86,7 @@ Material:
     - _Mode: 0
     - _NormalMapPower: 1
     - _OcclusionStrength: 1
+    - _OpacityMaster: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

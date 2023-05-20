@@ -14,16 +14,10 @@ public class SceneManage : MonoBehaviour
     private float fadeInDuration = 0.7f;
     private float fadeOutDuration = 0.7f;
     private bool hasCoroutineStarted = false;
-    public AudioClip audioClip;
-    public GameObject smartphone;
-    public Animator smartphoneAnimator;
 
-    private AudioSource audioSource;
-
-    void Start()
+    void start()
     {
         selectedPatient.description.Clear();
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -53,7 +47,7 @@ public class SceneManage : MonoBehaviour
 
             }
         }
-        if (sharedData.patient1 && sharedData.patient2 && sharedData.patient3 && !hasCoroutineStarted && sharedData.dillemaPatient==0)
+        if (sharedData.patient1 && sharedData.patient2 && sharedData.patient3 && !hasCoroutineStarted)
         {
             Debug.Log("All clear");
 
@@ -65,21 +59,6 @@ public class SceneManage : MonoBehaviour
     private IEnumerator UIFade()
     {
         // Fade in
-
-        yield return new WaitForSeconds(0.5f);
-
-        audioSource.clip = audioClip;
-        audioSource.Play();
-        yield return new WaitForSeconds(1f);
-        smartphone.SetActive(true);
-        
-        yield return new WaitForSeconds(2f);
-        smartphoneAnimator.SetBool("isDelayed", true);
-        yield return new WaitForSeconds(2f);
-        
-        audioSource.Stop();
-        smartphone.SetActive(false);
-
         subtitle.SetActive(true);
 
         canvasGroup.alpha = 0f;
