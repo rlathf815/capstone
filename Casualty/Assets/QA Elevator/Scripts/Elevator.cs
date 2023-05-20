@@ -534,8 +534,13 @@ public class Elevator : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
+		if(other.tag == "AutoDoorDetectArea")
+		{
+			DoorsOpening();
+        }
 		if(other.gameObject == Player.gameObject){
 			inTrigger = true;
+			print(inTrigger);
 			if(isReflectionProbe){
 				if(UpdateReflectionEveryFrame){
 					probe.refreshMode = UnityEngine.Rendering.ReflectionProbeRefreshMode.EveryFrame;
@@ -555,5 +560,4 @@ public class Elevator : MonoBehaviour {
 			}
 		}
 	}
-
 }
