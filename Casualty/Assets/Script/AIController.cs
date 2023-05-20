@@ -77,8 +77,6 @@ public class AIController : MonoBehaviour
 
         if (chasing && distance >= catchDistance)
         {
-            attacking = false;
-
             Debug.Log("chasing");
             StopCoroutine("attack");
             dest = player.position;
@@ -152,7 +150,6 @@ public class AIController : MonoBehaviour
             aiAnim.ResetTrigger("scream");
             aiAnim.SetTrigger("attack");
             StopCoroutine("attack");
-            chasing = true;
         }
 
         #endregion
