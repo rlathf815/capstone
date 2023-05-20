@@ -534,6 +534,13 @@ public class Elevator : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
+		if(other.tag == "AutoDoorDetectArea")
+		{
+			DoorsOpening();
+		}
+
+
+
 		if(other.gameObject == Player.gameObject){
 			inTrigger = true;
 			if(isReflectionProbe){
