@@ -13,9 +13,6 @@ public class LookAtPlayer : MonoBehaviour
     private Animator animator;
     public float currentDistance;
 
-    public SharedData sharedData;//쉐어드 데이터.
-    public bool triggerGhost = false;//추격시작
-
     private float timer;
 
     public AudioSource audioSource;
@@ -26,6 +23,8 @@ public class LookAtPlayer : MonoBehaviour
 
     private void Start()
     {
+
+
         animator = GetComponent<Animator>();
         animator.applyRootMotion = true;
 
@@ -34,49 +33,44 @@ public class LookAtPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+        // 플레이어 방향을 바라보도록 회전
+        Vector3 direction = playerTransform.position - transform.position;
+        direction.y = 0;//y 디렉션은 고정.
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), speed * Time.deltaTime);
 
-        if (Player.transform.position.x > -26)
+        // 일정거리를 유지하며 플레이어를 따라 이동
+        currentDistance = Vector3.Distance(transform.position, playerTransform.position);
+        if(currentDistance > 12.0f)
+        {//12이상 멀어지면 갑작스럽게 달려나오면서 한번 가속함.
+            velocity = transform.forward * speed *1.2f;
+        }
+        else if (currentDistance <= 12.0f && currentDistance > maxDistance)
         {
-            // 플레이어 방향을 바라보도록 회전
-            Vector3 direction = playerTransform.position - transform.position;
-            direction.y = 0;//y 디렉션은 고정.
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), speed * Time.deltaTime);
+            velocity = transform.forward * speed;
+        }
+        else if (currentDistance < minDistance)
+        {
+            velocity = -transform.forward * speed;
+        }
 
-            // 일정거리를 유지하며 플레이어를 따라 이동
-            currentDistance = Vector3.Distance(transform.position, playerTransform.position);
-            if (currentDistance > 12.0f)
-            {//12이상 멀어지면 갑작스럽게 달려나오면서 한번 가속함.
-                velocity = transform.forward * speed * 1.2f;
-            }
-            else if (currentDistance <= 12.0f && currentDistance > maxDistance)
-            {
-                velocity = transform.forward * speed;
-            }
-            else if (currentDistance < minDistance)
-            {//잡힘.
-                sharedData.dillemaRunOver = true;
-                velocity = -transform.forward * speed;
-            }
+        if (transform.position.x <= -132.5f)
+        {//-133 x포지션이 귀신이 문앞에 도달하는건데, 가끔 문을 침범함. 고로 아예 멈추게 하였음.
+            //추가로 이 멈춘상태에서 적절한 애니메이션이 있는지도 찾아볼 예정임.
+            velocity = transform.forward * 0;
+        }
 
-            if (transform.position.x <= -132.5f)
-            {//-133 x포지션이 귀신이 문앞에 도달하는건데, 가끔 문을 침범함. 고로 아예 멈추게 하였음.
-             //추가로 이 멈춘상태에서 적절한 애니메이션이 있는지도 찾아볼 예정임.
-                velocity = transform.forward * 0;
-            }
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        rigidbody.velocity = new Vector3(velocity.x, rigidbody.velocity.y, velocity.z);
 
-            Rigidbody rigidbody = GetComponent<Rigidbody>();
-            rigidbody.velocity = new Vector3(velocity.x, rigidbody.velocity.y, velocity.z);
+        if (timer <= 0.75f)
+        {
+            timer += Time.deltaTime;
 
-            if (timer <= 0.75f)
-            {
-                timer += Time.deltaTime;
-
-            }
-            else if (timer > 0.75f)
-            {
-                audioSource.PlayOneShot(audioClip);
-                timer = 0f;
-            }
+        }else if(timer > 0.75f)
+        {
+            audioSource.PlayOneShot(audioClip);
+            timer = 0f;
         }
     }
 

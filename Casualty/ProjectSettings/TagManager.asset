@@ -14,7 +14,6 @@ TagManager:
   - PlayerController
   - AutoDoorDetectArea
   - Corpse
-  - LetterLight
   layers:
   - Default
   - TransparentFX
