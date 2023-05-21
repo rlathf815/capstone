@@ -7,6 +7,8 @@ public class StitchgameClear : MonoBehaviour
 {
     public GameObject ui;
     public GameObject gut;
+    public SharedData sharedData;
+
 
     void start()
     {
@@ -18,10 +20,11 @@ public class StitchgameClear : MonoBehaviour
         if(gut == null)
         {
             ui.SetActive(true);
-     //  }
-     //  if (ui != null && ui.gameObject.activeSelf)
-     //  {
-            StartCoroutine(LoadMapSceneWithDelay());
+            if(sharedData.dillemaPatient == 0 )
+                StartCoroutine(LoadMapSceneWithDelay());
+            else
+                StartCoroutine(LoadChooseSceneWithDelay());
+
         }
 
     }
@@ -30,5 +33,11 @@ public class StitchgameClear : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         SceneManager.LoadScene("MapScene");
+    }
+    IEnumerator LoadChooseSceneWithDelay() //Coroutine 사용하여 씬 전환 전 잠시 딜레이
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        SceneManager.LoadScene("ChooseOne");
     }
 }

@@ -1,6 +1,8 @@
 Blood Decal and FX
 
-GOOGLE DRIVE links for all RENDER PIPELINE packages: https://drive.google.com/drive/folders/1KSvkICIJPFrOLU8z6DqkDGFVs8bQrWri
+Online access to versions and render pipeline versions: https://drive.google.com/drive/folders/1KSvkICIJPFrOLU8z6DqkDGFVs8bQrWri?usp=sharing
+
+Update Feb 2019.
 
 V3.4
 Material Fixes, Shader update with extra transparency power slider control
