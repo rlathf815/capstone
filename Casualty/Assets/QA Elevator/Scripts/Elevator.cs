@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour {
-	private bool inTrigger = false;
+	public bool AutomicOpen = false;
+
+    private bool inTrigger = false;
 	private Rigidbody Player;
 	private Transform PlayerCam;
 
@@ -93,7 +95,8 @@ public class Elevator : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		if (GetComponentInChildren<ReflectionProbe> ()) {
+
+        if (GetComponentInChildren<ReflectionProbe> ()) {
 			probe = GetComponentInChildren<ReflectionProbe> ();
 			probe.refreshMode = UnityEngine.Rendering.ReflectionProbeRefreshMode.OnAwake;
 			isReflectionProbe = true;
@@ -534,12 +537,25 @@ public class Elevator : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
+
 		if(other.gameObject == Player.gameObject){
-			inTrigger = true;
-			if(isReflectionProbe){
-				if(UpdateReflectionEveryFrame){
-					probe.refreshMode = UnityEngine.Rendering.ReflectionProbeRefreshMode.EveryFrame;
-					probe.RenderProbe ();
+			if (AutomicOpen == true)
+			{
+                if (other.GetComponent<cshDilemaPlayerState>().lookAtPlayer.triggerGhost == true)
+				{
+					DoorsOpening();
+				}
+			}
+			else
+			{
+				inTrigger = true;
+				if (isReflectionProbe)
+				{
+					if (UpdateReflectionEveryFrame)
+					{
+						probe.refreshMode = UnityEngine.Rendering.ReflectionProbeRefreshMode.EveryFrame;
+						probe.RenderProbe();
+					}
 				}
 			}
 		}
