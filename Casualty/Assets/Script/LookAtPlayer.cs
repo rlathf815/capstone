@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class LookAtPlayer : MonoBehaviour
 {
+    public SharedData sharedData;//쉐어드 데이터.
+
     public Transform playerTransform;
     public float distance = 5.0f;
     public float speed = 5.0f;
-    public float minDistance = 0.5f;//얼마나 붙어올지
-    public float maxDistance = 1.0f;//일정거리
+    public float minDistance = 1.5f;//얼마나 붙어올지
+    public float maxDistance = 2.0f;//일정거리
     public Vector3 velocity;
     private Animator animator;
     public float currentDistance;
 
-    public SharedData sharedData;//쉐어드 데이터.
-    public bool triggerGhost = false;//추격시작
+    public bool triggerGhost = false;//귀신이 작동하게되는 선
 
     private float timer;
 
     public AudioSource audioSource;
     public AudioClip audioClip;
+    public AudioClip Jumpscare_sound;
 
     public GameObject Player;
     private Rigidbody rb;
@@ -28,14 +30,22 @@ public class LookAtPlayer : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         animator.applyRootMotion = true;
+        sharedData.dillemaRunOver = false; // 딜레마씬 입장씨 한번 초기화
 
         rb = Player.GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
+        if (Player.transform.position.x > -24)
+        {
+            //audioSource.PlayOneShot(Jumpscare_sound); 소리가 겹쳐나서 보류
+            triggerGhost = true;
 
-        if (Player.transform.position.x > -26)
+            //계단이 보이는곳까지가면 귀신 활성화
+        }
+
+        if (triggerGhost)
         {
             // 플레이어 방향을 바라보도록 회전
             Vector3 direction = playerTransform.position - transform.position;
@@ -52,8 +62,9 @@ public class LookAtPlayer : MonoBehaviour
             {
                 velocity = transform.forward * speed;
             }
-            else if (currentDistance < minDistance)
-            {//잡힘.
+            
+            if (currentDistance < minDistance && sharedData.dillemaRunOver == false)
+            {
                 sharedData.dillemaRunOver = true;
                 velocity = -transform.forward * speed;
             }
@@ -77,6 +88,15 @@ public class LookAtPlayer : MonoBehaviour
                 audioSource.PlayOneShot(audioClip);
                 timer = 0f;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            sharedData.dillemaRunOver = true;//닿으면 데이터전달.
+            //아직 점프스케어 적용못함.
         }
     }
 
