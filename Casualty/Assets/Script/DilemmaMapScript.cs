@@ -7,6 +7,7 @@ public class DilemmaMapScript : MonoBehaviour
     public GameObject Elevator;
     public SharedData sharedData;//쉐어드 데이터.
     public LookAtPlayer lookAtPlayer;
+    public GameObject Humanoid;
 
     //public Transform ElevatorPos;
     public GameObject Player;
@@ -23,7 +24,7 @@ public class DilemmaMapScript : MonoBehaviour
     void Start()
     {
         rb = Player.GetComponent<Rigidbody>();
-        lookAtPlayer = GetComponent<LookAtPlayer>();
+        lookAtPlayer = Humanoid.GetComponent<LookAtPlayer>();
     }
 
     // Update is called once per frame
