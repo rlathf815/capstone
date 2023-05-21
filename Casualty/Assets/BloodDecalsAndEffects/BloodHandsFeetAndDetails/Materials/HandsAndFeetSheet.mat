@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: HandsAndFeetSheet
   m_Shader: {fileID: 4800000, guid: 3abc2696835a57e47a3fb05babf7e908, type: 3}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
@@ -35,11 +36,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DriedBlood_Curvature:
-        m_Texture: {fileID: 2800000, guid: 308ca4ba1cb8acb49858ceb0a3a2d4b4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3474b516636194d45bff181db4ca9219, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DriedBlood_Normal:
-        m_Texture: {fileID: 2800000, guid: 004c57b0cd4b5f84d8165ef5658d8ca4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 02d60c8213d240b42bcefbdd51d377ec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -79,36 +80,37 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Bias: 0.102
+    - _AlphaCutoff: 0.5
+    - _Bias: 0.417
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DriedBloodEffectLevel: 0
-    - _DriedBloodEffect_Tiling: 154
-    - _DriedBlood_Metallic: 0.275
-    - _DriedOpacityLevel: 5
+    - _DriedBloodEffectLevel: 0.125
+    - _DriedBloodEffect_Tiling: 111
+    - _DriedBlood_Metallic: 0.425
+    - _DriedOpacityLevel: 2
     - _DstBlend: 10
-    - _Gloss: 0.95
+    - _Gloss: 0.991
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 0.009
+    - _Metallic: 0.051
     - _Mode: 3
-    - _Noise1: 25.6
-    - _Noise2: 1.47
+    - _Noise1: 25.3
+    - _Noise2: 4.8
     - _OcclusionStrength: 1
-    - _OverallNormalPower: 0.42
+    - _OverallNormalPower: 2.22
     - _Parallax: 0.02
-    - _Scale: 0.218
+    - _Scale: 0.645
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TrasparencyPower: 0.505
+    - _TrasparencyPower: 0.308
     - _UVSec: 0
     - _ZWrite: 0
     - __dirty: 0
     m_Colors:
     - _Color: {r: 0.30588236, g: 0.054901965, b: 0.054901965, a: 1}
-    - _DriedBloodColorGloss: {r: 0.07352942, g: 0.028315542, b: 0.0037846018, a: 0}
+    - _DriedBloodColorGloss: {r: 0.32075468, g: 0.14503303, b: 0.04690279, a: 0.20392157}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColorTintFadeA: {r: 0.08823532, g: 0.002595159, b: 0.002595159, a: 1}
+    - _MainColorTintFadeA: {r: 0.122641504, g: 0.004049486, b: 0.011236874, a: 1}
