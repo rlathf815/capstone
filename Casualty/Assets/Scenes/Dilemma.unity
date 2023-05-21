@@ -38537,6 +38537,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1694646604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694646582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89b5abc30088d54ca41e3b1bf04292f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Humanoid: {fileID: 702318857}
+  lookAtPlayer: {fileID: 0}
 --- !u!1001 &1698081665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46401,6 +46415,10 @@ PrefabInstance:
     - target: {fileID: 114216818834575526, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
       propertyPath: CloseDelay
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114216818834575526, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
+      propertyPath: AutomicOpen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114216818834575526, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
       propertyPath: CurrentFloor
