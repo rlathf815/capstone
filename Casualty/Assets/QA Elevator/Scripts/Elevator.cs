@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour {
-	private bool inTrigger = false;
+    public GameObject Humanoid;
+    public LookAtPlayer lookAtPlayer;
+	//from Q
+
+    private bool inTrigger = false;
 	private Rigidbody Player;
 	private Transform PlayerCam;
 
@@ -93,7 +97,9 @@ public class Elevator : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		if (GetComponentInChildren<ReflectionProbe> ()) {
+        lookAtPlayer = Humanoid.GetComponent<LookAtPlayer>();//from Q
+
+        if (GetComponentInChildren<ReflectionProbe> ()) {
 			probe = GetComponentInChildren<ReflectionProbe> ();
 			probe.refreshMode = UnityEngine.Rendering.ReflectionProbeRefreshMode.OnAwake;
 			isReflectionProbe = true;
@@ -534,12 +540,10 @@ public class Elevator : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if(other.tag == "AutoDoorDetectArea")
+		if(other.tag == "AutoDoorDetectArea" && lookAtPlayer.triggerGhost == true)
 		{
 			DoorsOpening();
-		}
-
-
+		}//from Q
 
 		if(other.gameObject == Player.gameObject){
 			inTrigger = true;
