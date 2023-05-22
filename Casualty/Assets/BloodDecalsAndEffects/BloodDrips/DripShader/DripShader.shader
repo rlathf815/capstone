@@ -191,6 +191,8 @@ Shader "Blood/DripShader"
 				float3 WorldPosition = float3(IN.tSpace0.w,IN.tSpace1.w,IN.tSpace2.w);
 				float3 WorldViewDirection = _WorldSpaceCameraPos.xyz  - WorldPosition;
 				float4 ShadowCoords = float4( 0, 0, 0, 0 );
+				// Variable to track animation state (1 for playing, 0 for stopped)
+				float _AnimationState = 1.0;
 
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 					ShadowCoords = IN.shadowCoord;
@@ -215,7 +217,18 @@ Shader "Blood/DripShader"
 				float2 fbtiling6 = float2(fbcolsoffset6, fbrowsoffset6);
 				// UV Offset - calculate current tile linear index, and convert it to (X * coloffset, Y * rowoffset)
 				// Calculate current tile linear index
-				float fbcurrenttileindex6 = round( fmod( fbspeed6 + _ActualFrame, fbtotaltiles6) );
+				//float fbcurrenttileindex6 = clamp(round(fmod(fbspeed6 + _ActualFrame, fbtotaltiles6)), 0.0, fbtotaltiles6 - 1.0);
+				float fbcurrenttileindex6 = clamp(round(fbspeed6 + _ActualFrame), 0.0, fbtotaltiles6 - 1.0);
+				if (_AnimSpeed == 0 || _ActualFrame >= (fbtotaltiles6 - 1.0))
+				{
+					fbcurrenttileindex6 = fbtotaltiles6 - 1.0;  // Set the current tile index to the last frame
+					_AnimationState = 0; // Set the "_AnimationState" parameter to 0
+				}
+				else
+				{
+					fbcurrenttileindex6 = clamp(round(fbspeed6 + _ActualFrame), 0.0, fbtotaltiles6 - 1.0);
+					_AnimationState = 1; // Set the "_AnimationState" parameter to 1 to indicate the animation is playing
+				}
 				fbcurrenttileindex6 += ( fbcurrenttileindex6 < 0) ? fbtotaltiles6 : 0;
 				// Obtain Offset X coordinate from current tile linear index
 				float fblinearindextox6 = round ( fmod ( fbcurrenttileindex6, 8.0 ) );
@@ -259,6 +272,8 @@ Shader "Blood/DripShader"
 				inputData.positionWS = WorldPosition;
 				inputData.viewDirectionWS = WorldViewDirection;
 				inputData.shadowCoord = ShadowCoords;
+				// Stop the animation
+				
 
 				#ifdef _NORMALMAP
 					inputData.normalWS = normalize(TransformTangentToWorld(Normal, half3x3( WorldTangent, WorldBiTangent, WorldNormal )));
@@ -461,8 +476,14 @@ Shader "Blood/DripShader"
 				float2 fbtiling6 = float2(fbcolsoffset6, fbrowsoffset6);
 				// UV Offset - calculate current tile linear index, and convert it to (X * coloffset, Y * rowoffset)
 				// Calculate current tile linear index
-				float fbcurrenttileindex6 = round( fmod( fbspeed6 + _ActualFrame, fbtotaltiles6) );
-				fbcurrenttileindex6 += ( fbcurrenttileindex6 < 0) ? fbtotaltiles6 : 0;
+				//float fbcurrenttileindex6 = round( fmod( fbspeed6 + _ActualFrame, fbtotaltiles6) );
+				//fbcurrenttileindex6 += ( fbcurrenttileindex6 < 0) ? fbtotaltiles6 : 0;
+				float fbcurrenttileindex6 = clamp(round(fbspeed6 + _ActualFrame), 0.0, fbtotaltiles6 - 1.0);
+				if (fbcurrenttileindex6 >= fbtotaltiles6 - 1.0)
+				{
+					fbcurrenttileindex6 = fbtotaltiles6 - 1.0; // Set the current tile index to the last frame
+					_AnimSpeed = 0.0; // Stop the animation by setting the animation speed to 0
+				}
 				// Obtain Offset X coordinate from current tile linear index
 				float fblinearindextox6 = round ( fmod ( fbcurrenttileindex6, 8.0 ) );
 				// Multiply Offset X by coloffset
@@ -637,8 +658,14 @@ Shader "Blood/DripShader"
 				float2 fbtiling6 = float2(fbcolsoffset6, fbrowsoffset6);
 				// UV Offset - calculate current tile linear index, and convert it to (X * coloffset, Y * rowoffset)
 				// Calculate current tile linear index
-				float fbcurrenttileindex6 = round( fmod( fbspeed6 + _ActualFrame, fbtotaltiles6) );
-				fbcurrenttileindex6 += ( fbcurrenttileindex6 < 0) ? fbtotaltiles6 : 0;
+				//float fbcurrenttileindex6 = round( fmod( fbspeed6 + _ActualFrame, fbtotaltiles6) );
+				//fbcurrenttileindex6 += ( fbcurrenttileindex6 < 0) ? fbtotaltiles6 : 0;
+				float fbcurrenttileindex6 = clamp(fmod(fbspeed6 + _ActualFrame, fbtotaltiles6), 0.0, fbtotaltiles6 - 1.0);
+				if (fbcurrenttileindex6 >= fbtotaltiles6 - 1.0)
+				{
+					fbcurrenttileindex6 = fbtotaltiles6 - 1.0; // Set the current tile index to the last frame
+					_AnimSpeed = 0.0; // Stop the animation by setting the animation speed to 0
+				}
 				// Obtain Offset X coordinate from current tile linear index
 				float fblinearindextox6 = round ( fmod ( fbcurrenttileindex6, 8.0 ) );
 				// Multiply Offset X by coloffset
@@ -816,8 +843,10 @@ Shader "Blood/DripShader"
 				float2 fbtiling6 = float2(fbcolsoffset6, fbrowsoffset6);
 				// UV Offset - calculate current tile linear index, and convert it to (X * coloffset, Y * rowoffset)
 				// Calculate current tile linear index
-				float fbcurrenttileindex6 = round( fmod( fbspeed6 + _ActualFrame, fbtotaltiles6) );
-				fbcurrenttileindex6 += ( fbcurrenttileindex6 < 0) ? fbtotaltiles6 : 0;
+				//float fbcurrenttileindex6 = round( fmod( fbspeed6 + _ActualFrame, fbtotaltiles6) );
+				//fbcurrenttileindex6 += ( fbcurrenttileindex6 < 0) ? fbtotaltiles6 : 0;
+				float fbcurrenttileindex6 = clamp(floor(fbspeed6 + _ActualFrame), 0.0, fbtotaltiles6 - 1.0);
+
 				// Obtain Offset X coordinate from current tile linear index
 				float fblinearindextox6 = round ( fmod ( fbcurrenttileindex6, 8.0 ) );
 				// Multiply Offset X by coloffset
@@ -1011,8 +1040,11 @@ Shader "Blood/DripShader"
 				float2 fbtiling6 = float2(fbcolsoffset6, fbrowsoffset6);
 				// UV Offset - calculate current tile linear index, and convert it to (X * coloffset, Y * rowoffset)
 				// Calculate current tile linear index
-				float fbcurrenttileindex6 = round( fmod( fbspeed6 + _ActualFrame, fbtotaltiles6) );
-				fbcurrenttileindex6 += ( fbcurrenttileindex6 < 0) ? fbtotaltiles6 : 0;
+				//float fbcurrenttileindex6 = round( fmod( fbspeed6 + _ActualFrame, fbtotaltiles6) );
+					//fbcurrenttileindex6 += ( fbcurrenttileindex6 < 0) ? fbtotaltiles6 : 0;
+					// // Calculate current tile linear index
+				float fbcurrenttileindex6 = clamp(floor(fbspeed6 + _ActualFrame), 0.0, fbtotaltiles6 - 1.0);
+
 				// Obtain Offset X coordinate from current tile linear index
 				float fblinearindextox6 = round ( fmod ( fbcurrenttileindex6, 8.0 ) );
 				// Multiply Offset X by coloffset
