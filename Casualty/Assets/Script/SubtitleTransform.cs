@@ -59,7 +59,19 @@ public class SubtitleTransform : MonoBehaviour
             colorIndex = (colorIndex + 1) % colorSequence.Length;
             yield return new WaitForSeconds(delayBetweenTransformations);
         }
+        yield return new WaitForSeconds(2f);
+
+        // Fade out
+        while (canvasGroup.alpha > 0f)
+        {
+            canvasGroup.alpha -= Time.deltaTime / 0.7f;
+            yield return null;
+        }
+        canvasGroup.alpha = 0f;
+
+        subtitle.SetActive(false);
     }
+
 
     private string ApplyTransformation(string subtitle, int transformationIndex)
     {

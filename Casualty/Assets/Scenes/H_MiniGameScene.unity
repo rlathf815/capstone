@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: b49528632c520314faeb0751c4edf976, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -6923,7 +6923,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118437742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69bb8a6a8ee8a6a45855f3f8a1cc7fcb, type: 3}
   m_Name: 
@@ -6964,6 +6964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpscare: {fileID: 1535559756}
   jsSound: {fileID: 8300000, guid: 5eedf861df428114ab99d232240180db, type: 3}
+  sharedData: {fileID: 11400000, guid: 66d00ea5a7a98314197f974c9ca10819, type: 2}
 --- !u!82 &2118437746
 AudioSource:
   m_ObjectHideFlags: 0

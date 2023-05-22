@@ -20,4 +20,6 @@ public class SharedData : ScriptableObject
 
     public bool HorrorInitial = true;   //호러씬 열린 적 있으면 true
     public bool hasEntered = false;
+
+    public bool horrorPatient = false;
 }

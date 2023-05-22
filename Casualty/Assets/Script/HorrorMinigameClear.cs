@@ -8,13 +8,13 @@ public class HorrorMinigameClear : MonoBehaviour
     public GameObject jumpscare;
     public AudioClip jsSound;
     private AudioSource audioSource;
-
+    public SharedData sharedData;
     // Start is called before the first frame update
     void Start()
     {
         jumpscare.SetActive(false);
         audioSource = GetComponent<AudioSource>();
-
+        sharedData.horrorPatient = true;
         StartCoroutine(ClearScene());
     }
 
