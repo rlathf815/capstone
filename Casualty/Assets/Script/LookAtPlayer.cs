@@ -102,7 +102,7 @@ public class LookAtPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             sharedData.dillemaRunOver = true;//닿으면 데이터전달.
-
+            this.transform.gameObject.SetActive(false);
             //아직 점프스케어 적용못함.
         }
     }
