@@ -15,6 +15,7 @@ TagManager:
   - AutoDoorDetectArea
   - Corpse
   - LetterLight
+  - ParkingSpot
   layers:
   - Default
   - TransparentFX

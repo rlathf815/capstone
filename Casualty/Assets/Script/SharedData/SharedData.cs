@@ -16,5 +16,5 @@ public class SharedData : ScriptableObject
     public int dillemaPatient;      //A ->1, B->2. 아직 chooseOne씬 보지 않았을 땐 기본값 0
 
     public bool dillemaRunOver= false; // 딜레마씬의 게임오버(성공이든아니든)조건 = true
-
+    public bool bodyParked=false;
 }
