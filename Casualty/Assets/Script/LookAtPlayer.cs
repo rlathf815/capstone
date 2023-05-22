@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LookAtPlayer : MonoBehaviour
 {
@@ -89,6 +90,11 @@ public class LookAtPlayer : MonoBehaviour
                 timer = 0f;
             }
         }
+
+        if (sharedData.dillemaRunOver)
+        {
+            StartCoroutine(YouAreDead());
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -96,8 +102,15 @@ public class LookAtPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             sharedData.dillemaRunOver = true;//닿으면 데이터전달.
+
             //아직 점프스케어 적용못함.
         }
+    }
+
+    private IEnumerator YouAreDead()
+    {
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene("HorrorScene");
     }
 
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DilemmaMapScript : MonoBehaviour
 {
@@ -61,11 +62,16 @@ public class DilemmaMapScript : MonoBehaviour
             }
 
 
-            if (Player.transform.position.x < -134 && sharedData.dillemaRunOver == false)
+            if (Player.transform.position.x < -134.5 && sharedData.dillemaRunOver == false)
             {//엘리베이터 안에 들어갔을 때
 
                 sharedData.dillemaRunOver = true;
 
+            }
+
+            if (sharedData.dillemaRunOver)
+            {
+                StartCoroutine(YouEscaped());
             }
 
             if (isMoving)
@@ -75,5 +81,11 @@ public class DilemmaMapScript : MonoBehaviour
                 transform.Translate(Vector3.right * direction * speed * Time.deltaTime);
             }
         }
+    }
+    private IEnumerator YouEscaped()
+    {
+        yield return new WaitForSeconds(4.0f);
+
+        SceneManager.LoadScene("HorrorScene");
     }
 }
