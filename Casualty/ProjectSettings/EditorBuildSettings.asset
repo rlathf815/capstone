@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HorrorScene.unity
     guid: 80985b3519d634f4891a7642dcc4b39a
+  - enabled: 1
+    path: Assets/Scenes/Dilemma.unity
+    guid: 34410194121f6db4baed8046d238fb25
   m_configObjects: {}
