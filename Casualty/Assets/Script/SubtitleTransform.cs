@@ -31,6 +31,7 @@ public class SubtitleTransform : MonoBehaviour
             transformedSubtitle = originalSubtitle;
             transformationCoroutine = StartCoroutine(TransformSubtitle());
             hasCoroutineStarted = true;
+            sharedData.HorrorInitial = false;
         }
     }
 

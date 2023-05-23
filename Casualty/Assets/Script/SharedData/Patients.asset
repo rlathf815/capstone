@@ -22,5 +22,5 @@ MonoBehaviour:
   dillemaRunOver: 1
   bodyParked: 1
   HorrorInitial: 1
-  hasEntered: 1
-  horrorPatient: 1
+  hasEntered: 0
+  horrorPatient: 0

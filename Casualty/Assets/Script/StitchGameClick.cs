@@ -21,6 +21,9 @@ public class StitchGameClick : MonoBehaviour
         GauzeUI.gameObject.SetActive(false);
         ScarpelUI.gameObject.SetActive(false);
         ForcepsUI.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
     }
     // Update is called once per frame
     void Update()

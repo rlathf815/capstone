@@ -19,7 +19,10 @@ public class HororSceneManage : MonoBehaviour
             //StartCoroutine(UIFade());
             Player.transform.position = desiredPosition.position;
             Player.transform.rotation = desiredPosition.rotation;
+            
         }
+        else 
+           // sharedData.HorrorInitial = false;
       
         if(sharedData.horrorPatient==true)
         {
@@ -45,7 +48,7 @@ public class HororSceneManage : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                SceneManager.LoadScene("H_StitchGameScene");
+                SceneManager.LoadScene("H_StitchMiniGameScene");
 
             }
 
