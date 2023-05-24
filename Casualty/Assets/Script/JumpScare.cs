@@ -6,20 +6,26 @@ using UnityEngine.UI;
 public class JumpScare : MonoBehaviour
 {
     // Start is called before the first frame update
-    //public GameObject ghost;
-    public GameObject jump;
+    //public GameObject ghost;  
     //public GameObject eyeUI;
     //public GameObject deadPos;
 
     public Camera playerCam;
     public Camera deathCam;
+    //전환될 카메라
 
     public SharedData sharedData;
+
+    public GameObject jump;//정가운데 친구
+    public GameObject pushGhost;
     void Start()
     {
+        sharedData.glitchOn = false;
         deathCam.gameObject.SetActive(false);
         //eyeUI.SetActive(false);
         jump.SetActive(false);
+        pushGhost.gameObject.SetActive(false);
+        //꿈찔이들 애니메이션이 루프가 아니라서 한번만 사용
 
     }
 
@@ -42,10 +48,12 @@ public class JumpScare : MonoBehaviour
 
             //이전 코드들
             jump.SetActive(true);
+            pushGhost.gameObject.SetActive(true);
 
             playerCam.enabled = false;
             deathCam.gameObject.SetActive(true);
             deathCam.enabled = true;
+            sharedData.glitchOn = true;
         }
     }
 }
