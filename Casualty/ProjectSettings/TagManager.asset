@@ -16,6 +16,7 @@ TagManager:
   - Corpse
   - LetterLight
   - ParkingSpot
+  - pushGhost
   layers:
   - Default
   - TransparentFX
