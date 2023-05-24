@@ -12,6 +12,8 @@ public class HorrorMinigameClear : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sharedData.glitchOn = false;
+        
         jumpscare.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         sharedData.horrorPatient = true;
@@ -28,8 +30,11 @@ public class HorrorMinigameClear : MonoBehaviour
         yield return new WaitForSeconds(13.0f);
         jumpscare.SetActive(true);
         audioSource.PlayOneShot(jsSound);
+        sharedData.glitchOn = true;
+        yield return new WaitForSeconds(1.0f);
+        sharedData.glitchOn = false;
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
 
         SceneManager.LoadScene("HorrorScene");
     }

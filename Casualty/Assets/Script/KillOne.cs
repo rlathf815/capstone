@@ -42,6 +42,7 @@ public class KillOne : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sharedData.glitchOn = false;
         if (sharedData.dillemaPatient == 0)
         {
             Debug.Log("entered decision scene");
@@ -87,32 +88,39 @@ public class KillOne : MonoBehaviour
 
     private IEnumerator YouKilledHim()
     {
+
         AlexDead.SetActive(true);
         yield return new WaitForSeconds(2.9f);
         glitch.Play();
+
         yield return new WaitForSeconds(0.1f);
 
         AlexDead.SetActive(false);
         AlexKilled.SetActive(true);
-        
+        sharedData.glitchOn = true;
+
         yield return new WaitForSeconds(0.2f);
         AlexKilled.SetActive(false);
         AlexDead.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         glitch.volume = 0;
+        sharedData.glitchOn = false;
 
         yield return new WaitForSeconds(1f);
 
         glitch.volume = 1;
+        sharedData.glitchOn = true;
         AlexDead.SetActive(false);
         AlexKilled.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         AlexKilled.SetActive(false);
         AlexDead.SetActive(true);
         glitch.volume = 0;
+        sharedData.glitchOn = false;
 
         yield return new WaitForSeconds(1f);
 
+        sharedData.glitchOn = true;
         glitch.volume = 1;
         AlexDead.SetActive(false);
         AlexKilled.SetActive(true);
@@ -120,9 +128,11 @@ public class KillOne : MonoBehaviour
         AlexKilled.SetActive(false);
         AlexDead.SetActive(true);
         glitch.volume = 0;
+        sharedData.glitchOn = false;
 
         yield return new WaitForSeconds(0.7f);
 
+        sharedData.glitchOn = true;
         glitch.volume = 1;
         AlexDead.SetActive(false);
         AlexKilled.SetActive(true);
@@ -130,6 +140,7 @@ public class KillOne : MonoBehaviour
         AlexKilled.SetActive(false);
         AlexDead.SetActive(true);
         glitch.volume = 0;
+        sharedData.glitchOn = false;
 
 
         Flick.enabled = true;
@@ -137,12 +148,14 @@ public class KillOne : MonoBehaviour
         for (int i=0; i<30; i++)
         {
             yield return new WaitForSeconds(0.05f);
+            sharedData.glitchOn = true;
             glitch.volume = 1;
             AlexDead.SetActive(false);
             AlexKilled.SetActive(true);
             yield return new WaitForSeconds(0.05f);
             AlexKilled.SetActive(false);
             AlexDead.SetActive(true);
+            sharedData.glitchOn = false;
             glitch.volume = 0;
         }
         
@@ -159,35 +172,42 @@ public class KillOne : MonoBehaviour
 
         SarahDead.SetActive(false);
         SarahKilled.SetActive(true);
+        sharedData.glitchOn = true;
 
         yield return new WaitForSeconds(0.2f);
         SarahKilled.SetActive(false);
         SarahDead.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         glitch.volume = 0;
+        sharedData.glitchOn = false;
 
         yield return new WaitForSeconds(1f);
 
+        sharedData.glitchOn = true;
         glitch.volume = 1;
         SarahDead.SetActive(false);
         SarahKilled.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         SarahKilled.SetActive(false);
         SarahDead.SetActive(true);
+        sharedData.glitchOn = false;
         glitch.volume = 0;
 
         yield return new WaitForSeconds(1f);
 
+        sharedData.glitchOn = true;
         glitch.volume = 1;
         SarahDead.SetActive(false);
         SarahKilled.SetActive(true);
         yield return new WaitForSeconds(0.3f);
         SarahKilled.SetActive(false);
         SarahDead.SetActive(true);
+        sharedData.glitchOn = false;
         glitch.volume = 0;
 
         yield return new WaitForSeconds(0.7f);
 
+        sharedData.glitchOn = true;
         glitch.volume = 1;
         SarahDead.SetActive(false);
         SarahKilled.SetActive(true);
@@ -195,21 +215,27 @@ public class KillOne : MonoBehaviour
         SarahKilled.SetActive(false);
         SarahDead.SetActive(true);
         glitch.volume = 0;
+        sharedData.glitchOn = false;
 
 
         Flick.enabled=true;
+        sharedData.glitchOn = true;
         for (int i = 0; i < 30; i++)
         {
             yield return new WaitForSeconds(0.05f);
+            
             glitch.volume = 1;
             SarahDead.SetActive(false);
             SarahKilled.SetActive(true);
             yield return new WaitForSeconds(0.05f);
             SarahKilled.SetActive(false);
             SarahDead.SetActive(true);
+            
             glitch.volume = 0;
         }
-
+        SarahDead.SetActive(false);
+        SarahKilled.SetActive(true);
+        sharedData.glitchOn = false;
 
         SceneManager.LoadScene("MapScene");
 

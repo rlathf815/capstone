@@ -21,7 +21,7 @@ public class MapSceneStart : MonoBehaviour
             sharedData.patient2 = false;
             sharedData.patient3 = false;
         }
-        
+        sharedData.glitchOn = false;
 
     }
 
