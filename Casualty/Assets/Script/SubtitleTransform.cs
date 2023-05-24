@@ -22,6 +22,7 @@ public class SubtitleTransform : MonoBehaviour
     private void Start()
     {
         subtitle.SetActive(false);
+        sharedData.glitchOn = false;
 
     }
     void Update()
@@ -32,6 +33,8 @@ public class SubtitleTransform : MonoBehaviour
             transformationCoroutine = StartCoroutine(TransformSubtitle());
             hasCoroutineStarted = true;
             sharedData.HorrorInitial = false;
+            
+            
         }
     }
 
@@ -40,6 +43,7 @@ public class SubtitleTransform : MonoBehaviour
         //yield return new WaitForSeconds(6f);
 
         subtitle.SetActive(true);
+        
         canvasGroup.alpha = 0f;
         while (canvasGroup.alpha < 1f)
         {
@@ -48,7 +52,7 @@ public class SubtitleTransform : MonoBehaviour
         }
         canvasGroup.alpha = 1f;
         yield return new WaitForSeconds(1f);
-
+        sharedData.glitchOn = true;
         int transformationIndex = 0;
         int colorIndex = 0;
         while (transformationIndex < originalSubtitle.Length)
@@ -60,6 +64,8 @@ public class SubtitleTransform : MonoBehaviour
             colorIndex = (colorIndex + 1) % colorSequence.Length;
             yield return new WaitForSeconds(delayBetweenTransformations);
         }
+        sharedData.glitchOn = false;
+
         yield return new WaitForSeconds(2f);
 
         // Fade out

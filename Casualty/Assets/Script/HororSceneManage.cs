@@ -28,6 +28,7 @@ public class HororSceneManage : MonoBehaviour
         {
             patient.SetActive(false);
         }
+        sharedData.glitchOn = false;
 
     }
 
