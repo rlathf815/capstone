@@ -2791,7 +2791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 1938162944}
   gut: {fileID: 741352554}
-  sharedData: {fileID: 0}
+  sharedData: {fileID: 11400000, guid: 66d00ea5a7a98314197f974c9ca10819, type: 2}
 --- !u!4 &962232333
 Transform:
   m_ObjectHideFlags: 0

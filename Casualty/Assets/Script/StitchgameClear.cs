@@ -20,10 +20,12 @@ public class StitchgameClear : MonoBehaviour
         if(gut == null)
         {
             ui.SetActive(true);
-            if(sharedData.dillemaPatient == 0 )
+            if(sharedData.dillemaPatient == 0 && !sharedData.horrorPatient )
                 StartCoroutine(LoadMapSceneWithDelay());
-            else
+            else if(sharedData.dillemaPatient != 0 &&!sharedData.horrorPatient)
                 StartCoroutine(LoadChooseSceneWithDelay());
+            else if (sharedData.dillemaPatient != 0 && sharedData.horrorPatient)
+                StartCoroutine(LoadHorrorSceneWithDelay());
 
         }
 
@@ -39,5 +41,11 @@ public class StitchgameClear : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         SceneManager.LoadScene("ChooseOne");
+    }
+    IEnumerator LoadHorrorSceneWithDelay() //Coroutine 사용하여 씬 전환 전 잠시 딜레이
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        SceneManager.LoadScene("HorrorScene");
     }
 }
