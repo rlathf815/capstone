@@ -21,7 +21,7 @@ public class AIController : MonoBehaviour
     // attack은 모든 상태에서 전환될 수 있음
     public bool walking, chasing, screaming, screamed, attacking;
     public int destinationAmount, TeleportTargetAmount, targetDestinationIndex, teleportTargetIndex;
-    public Transform player;
+    public GameObject player;
     public Vector3 rayCastOffset;
     private Transform currentDest;
     private Vector3 dest;
@@ -47,30 +47,34 @@ public class AIController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
         distance = Vector3.Distance(transform.position, player.transform.position);
         #region Raycast
-        Vector3 direction = player.position - transform.position;
-        direction = direction.normalized;
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position + rayCastOffset, direction, out hit, sightDistance))
+        if (player.activeSelf)
         {
-            if (hit.collider.gameObject.tag == "Player")
+            Vector3 direction = player.transform.position - transform.position;
+            direction = direction.normalized;
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position + rayCastOffset, direction, out hit, sightDistance))
             {
-                //Debug.Log("Player detected");
-                walking = false;
-                StopCoroutine("stayIdle");
-                StopCoroutine("chaseRoutine");
-                // 처음 player 적발시에만 바로 chasing 하지않고 screaming -> chasing
-                if (!screamed)
+                if (hit.collider.gameObject.tag == "Player")
                 {
+                    Debug.Log("hit.collider.gameObject: " + hit.collider.gameObject.transform);
+                    walking = false;
+                    StopCoroutine("stayIdle");
+                    StopCoroutine("chaseRoutine");
+                    // 처음 player 적발시에만 바로 chasing 하지않고 screaming -> chasing
+                    if (!screamed)
+                    {
 
-                    StartCoroutine("scream");
-                    screaming = true;
-                }
-                else
-                {
-                    StartCoroutine("chaseRoutine");
-                    chasing = true;
+                        StartCoroutine("scream");
+                        screaming = true;
+                    }
+                    else
+                    {
+                        StartCoroutine("chaseRoutine");
+                        chasing = true;
+                    }
                 }
             }
         }
@@ -80,15 +84,15 @@ public class AIController : MonoBehaviour
 
         if (chasing && distance >= catchDistance)
         {
-            if(!audioChase.isPlaying)
+            if (!audioChase.isPlaying)
             {
                 audioBackground.Stop();
                 audioChase.Play();
             }
             Debug.Log("chasing");
             StopCoroutine("attack");
-            dest = player.position;
-            transform.LookAt(player.position);
+            dest = player.transform.position;
+            transform.LookAt(player.transform.position);
             ai.destination = dest;
             ai.speed = chaseSpeed;
             aiAnim.ResetTrigger("scream");
@@ -134,7 +138,7 @@ public class AIController : MonoBehaviour
             // 정지 상태에서 scream
 
             ai.speed = 0;
-            transform.LookAt(player.position);
+            transform.LookAt(player.transform.position);
             aiAnim.ResetTrigger("chase");
             aiAnim.ResetTrigger("idle");
             aiAnim.ResetTrigger("walk");
@@ -152,7 +156,7 @@ public class AIController : MonoBehaviour
             Debug.Log("attacking");
             // 정지 상태에서 attack
             ai.speed = 0;
-            transform.LookAt(player.position);
+            transform.LookAt(player.transform.position);
             aiAnim.ResetTrigger("chase");
             aiAnim.ResetTrigger("idle");
             aiAnim.ResetTrigger("attack");
@@ -166,7 +170,7 @@ public class AIController : MonoBehaviour
         #endregion
 
         #region check hit
-        if (distance <= catchDistance) // 가까이 붙으면 잡힌걸로 판정
+        if (distance <= catchDistance && player.activeSelf) // 가까이 붙으면 잡힌걸로 판정
         {
             Debug.Log("catch, distance: " + distance);
             // 잡혔을때 주어진 위치로 이동 //
@@ -175,6 +179,7 @@ public class AIController : MonoBehaviour
             attacking = true;
         }
         #endregion
+
 
     }
 
@@ -205,24 +210,32 @@ public class AIController : MonoBehaviour
         if (teleportTargetIndex > TeleportTargetAmount)
         {
             teleportTargetIndex = 0;
-            player.position = TeleportTargetObject[teleportTargetIndex].transform.position;
-            player.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
+            player.transform.position = TeleportTargetObject[teleportTargetIndex].transform.position;
+            player.transform.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
             teleportTargetIndex++;
         }
         else
         {
-            player.position = TeleportTargetObject[teleportTargetIndex].transform.position;
-            player.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
+            player.transform.position = TeleportTargetObject[teleportTargetIndex].transform.position;
+            player.transform.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
             teleportTargetIndex++;
         }
 
     }
+    public void stopChase()
+    {
+        walking = true;
+        chasing = false;
+        StopCoroutine("chaseRoutine");
+        currentDest = destinations[targetDestinationIndex];
+    }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("targetDestinationIndex: " + targetDestinationIndex);
         if (other.gameObject.tag == "Destination")
         {
-            if (targetDestinationIndex <= destinationAmount)
+            if (targetDestinationIndex < destinationAmount-1)
                 targetDestinationIndex++;
             else
                 targetDestinationIndex = 0;
