@@ -20,7 +20,7 @@ public class AIController : MonoBehaviour
     // screamed: 처음 한번만 scream 애니메이션 재생, 이후 chasing으로 진입해야함
     // attack은 모든 상태에서 전환될 수 있음
     public bool walking, chasing, screaming, screamed, attacking;
-    public int destinationAmount, TeleportTargetAmount, targetDestinationIndex, teleportTargetIndex;
+    public int destinationAmount, TeleportTargetAmount, targetDestinationIndex, teleportTargetIndex, endingSceneAmount;
     public GameObject player;
     public Vector3 rayCastOffset;
     private Transform currentDest;
