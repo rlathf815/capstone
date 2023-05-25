@@ -17,6 +17,8 @@ TagManager:
   - LetterLight
   - ParkingSpot
   - pushGhost
+  - PlayerHide
+  - Destination
   layers:
   - Default
   - TransparentFX
