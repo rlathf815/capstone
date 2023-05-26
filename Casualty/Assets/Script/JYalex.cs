@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class JYalex : MonoBehaviour
 {
+    public SharedData sharedData;//알렉스가 죽은 2일때 발동하도록, 알렉스가 사는건 1.
 
     public Image UI;
     public GameObject Alex;
@@ -26,6 +27,12 @@ public class JYalex : MonoBehaviour
         Alex.SetActive(false);
         UI.gameObject.SetActive(false);
         lookAtPlayer = Ghost.GetComponent<LookAtPlayer>();
+
+        if(isNotAlexDead())
+        {//알렉스를 죽인게 아니면
+            this.gameObject.SetActive(false);
+            //함수 실행안함.
+        }
     }
 
     // Update is called once per frame
@@ -63,5 +70,17 @@ public class JYalex : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         UI.gameObject.SetActive(false);
         Alex.SetActive(false);
+    }
+
+    private bool isNotAlexDead()
+    {
+        if(sharedData.dillemaPatient == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }        
     }
 }

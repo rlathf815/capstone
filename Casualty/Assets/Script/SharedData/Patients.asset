@@ -18,8 +18,8 @@ MonoBehaviour:
   patient1: 1
   patient2: 1
   patient3: 1
-  dillemaPatient: 1
-  dillemaRunOver: 1
+  dillemaPatient: 2
+  dillemaRunOver: 0
   bodyParked: 1
   HorrorInitial: 0
   hasEntered: 0
