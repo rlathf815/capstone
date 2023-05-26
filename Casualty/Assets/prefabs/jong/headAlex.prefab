@@ -2251,7 +2251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8683477811252579669}
-  - component: {fileID: 4316493976063659965}
+  - component: {fileID: 3634949244687303995}
   m_Layer: 0
   m_Name: headAlex
   m_TagString: Untagged
@@ -2280,7 +2280,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 100, y: 90, z: 0}
---- !u!114 &4316493976063659965
+--- !u!114 &3634949244687303995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2289,12 +2289,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8343544633644685295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8588abb87712f4681e2292aba580be, type: 3}
+  m_Script: {fileID: 11500000, guid: d714425f457afcb44a0ae9378084d11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   intervalMin: 0.1
   intervalMax: 1
-  lightBulb: {fileID: 9156172698642478057}
+  head: {fileID: 9156172698642478057}
 --- !u!1 &8410892580047529060
 GameObject:
   m_ObjectHideFlags: 0
