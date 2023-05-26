@@ -51,7 +51,7 @@ public class LookAtPlayer : MonoBehaviour
             // 플레이어 방향을 바라보도록 회전
             Vector3 direction = playerTransform.position - transform.position;
             direction.y = 0;//y 디렉션은 고정.
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), speed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), speed*10 * Time.deltaTime);
 
             // 일정거리를 유지하며 플레이어를 따라 이동
             currentDistance = Vector3.Distance(transform.position, playerTransform.position);
