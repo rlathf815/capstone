@@ -25,7 +25,7 @@ public class LookAtPlayer : MonoBehaviour
     public AudioClip Jumpscare_sound;
 
     public GameObject Player;
-    private Rigidbody rb;
+    //private Rigidbody rb;
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class LookAtPlayer : MonoBehaviour
         animator.applyRootMotion = true;
         sharedData.dillemaRunOver = false; // 딜레마씬 입장씨 한번 초기화
 
-        rb = Player.GetComponent<Rigidbody>();
+        //rb = Player.GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -55,29 +55,32 @@ public class LookAtPlayer : MonoBehaviour
 
             // 일정거리를 유지하며 플레이어를 따라 이동
             currentDistance = Vector3.Distance(transform.position, playerTransform.position);
-            if (currentDistance > 12.0f)
-            {//12이상 멀어지면 갑작스럽게 달려나오면서 한번 가속함.
-                velocity = transform.forward * speed * 1.2f;
+            if (currentDistance > 6.0f)
+            {//5이상 멀어지면 좀더 빨라짐.
+                //velocity = transform.forward * speed * 1.2f;
+                transform.position += transform.forward * speed * 1.2f * Time.deltaTime;
             }
             else if (currentDistance <= 12.0f && currentDistance > maxDistance)
             {
-                velocity = transform.forward * speed;
+                //velocity = transform.forward * speed;
+                transform.position += transform.forward * speed * Time.deltaTime;
             }
             
             if (currentDistance < minDistance && sharedData.dillemaRunOver == false)
             {
                 sharedData.dillemaRunOver = true;
-                velocity = -transform.forward * speed;
+                //velocity = -transform.forward * speed;
             }
 
             if (transform.position.x <= -132.5f)
             {//-133 x포지션이 귀신이 문앞에 도달하는건데, 가끔 문을 침범함. 고로 아예 멈추게 하였음.
              //추가로 이 멈춘상태에서 적절한 애니메이션이 있는지도 찾아볼 예정임.
-                velocity = transform.forward * 0;
+             //velocity = transform.forward * 0;
+                transform.position += transform.forward * 0 * Time.deltaTime;
             }
 
-            Rigidbody rigidbody = GetComponent<Rigidbody>();
-            rigidbody.velocity = new Vector3(velocity.x, rigidbody.velocity.y, velocity.z);
+            //Rigidbody rigidbody = GetComponent<Rigidbody>();
+            //rigidbody.velocity = new Vector3(velocity.x, rigidbody.velocity.y, velocity.z);
 
             if (timer <= 0.75f)
             {
@@ -104,6 +107,7 @@ public class LookAtPlayer : MonoBehaviour
             sharedData.dillemaRunOver = true;//닿으면 데이터전달.
             this.transform.gameObject.SetActive(false);
             //아직 점프스케어 적용못함.
+            //적용함!
         }
     }
 
