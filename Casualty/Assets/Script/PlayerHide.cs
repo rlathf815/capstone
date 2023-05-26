@@ -7,6 +7,8 @@ public class PlayerHide : MonoBehaviour
     public GameObject hideText, stopHideText, player, hidingPlayer;
     public AIController aiController;
     public Transform aiTransform;
+    public Animator anim;
+    public AudioSource audioOpen;
     bool hiding, interactable;
     public float loseDistance;
     void Start()
@@ -36,13 +38,9 @@ public class PlayerHide : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                interactable = false;
-                hiding = true;
-                hideText.SetActive(false);
-                stopHideText.SetActive(true);
-                hidingPlayer.SetActive(true);
-                player.SetActive(false);
-
+                anim.SetTrigger("open");
+                if(!audioOpen.isPlaying)
+                    audioOpen.Play();
             }
         }
         if (hiding)
@@ -54,12 +52,24 @@ public class PlayerHide : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Q))
             {
+                anim.SetTrigger("close");
+                if (!audioOpen.isPlaying)
+                    audioOpen.Play();
                 stopHideText.SetActive(false);
                 player.SetActive(true);
                 hidingPlayer.SetActive(false);
                 hiding = false;
             }
         }
+    }
+    public void ToCabinet()
+    {
+        interactable = false;
+        hiding = true;
+        hideText.SetActive(false);
+        player.SetActive(false);
+        stopHideText.SetActive(true);
+        hidingPlayer.SetActive(true);
     }
 }
 
