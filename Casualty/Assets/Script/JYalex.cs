@@ -13,6 +13,8 @@ public class JYalex : MonoBehaviour
     public GameObject Player;
     public GameObject Ghost;
 
+    public GameObject bloodTxt;
+
     private bool activeAlex;
     private bool deactiveAlex;
 
@@ -24,14 +26,18 @@ public class JYalex : MonoBehaviour
         activeAlex = false;
         deactiveAlex = false;
 
+        //
+
+        bloodTxt.SetActive(false);
         Alex.SetActive(false);
         UI.gameObject.SetActive(false);
         lookAtPlayer = Ghost.GetComponent<LookAtPlayer>();
+        //초기화
 
-        if(isNotAlexDead())
+        if(isAlexAlive())
         {//알렉스를 죽인게 아니면
             this.gameObject.SetActive(false);
-            //함수 실행안함.
+            //스크립트 실행안함.
         }
     }
 
@@ -41,14 +47,16 @@ public class JYalex : MonoBehaviour
         if(lookAtPlayer.triggerGhost && Player.transform.position.x < -44 && !deactiveAlex)
         {
             Alex.SetActive(true);//복도앞부터 활성화
-            activeAlex = true;
+            //알아서 대머리들이 보글보글거림.(프리팹으로 shakeHead.cs되어있음.)
+            activeAlex = true;//알렉스 활성화
             if (activeAlex && Player.transform.position.z < 21f)
-            {
+            {//알렉스가 한번 켜진 상태로 그 복도 중간에 서면 꺼짐.
                 deactiveAlex = true;
                 activeAlex = false;
+                //한번만 발동하게 함.
 
-
-                StartCoroutine(pass());
+                StartCoroutine(pass()); 
+                bloodTxt.SetActive(true);
 
             }
         }
@@ -58,6 +66,8 @@ public class JYalex : MonoBehaviour
 
     private IEnumerator pass()
     {
+ 
+
         UI.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         UI.gameObject.SetActive(false);
@@ -67,12 +77,15 @@ public class JYalex : MonoBehaviour
         UI.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.1f);
         UI.gameObject.SetActive(true);
+        Alex.SetActive(false);
         yield return new WaitForSeconds(0.25f);
         UI.gameObject.SetActive(false);
-        Alex.SetActive(false);
+       
+
+        //화면이 점멸하다가 어두워졌을때 알렉스가 사라지고 밝아짐.
     }
 
-    private bool isNotAlexDead()
+    private bool isAlexAlive()
     {
         if(sharedData.dillemaPatient == 1)
         {
