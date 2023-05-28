@@ -56,11 +56,6 @@ public class EndingSequenceStart : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         scream.SetActive(false);
         ai.SetActive(true);
-        startChase();
-    }
-    private void startChase()
-    {
-        controller.StartCoroutine("chaseRoutine");
-        controller.chasing = true;
+        controller.startChase();
     }
 }

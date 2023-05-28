@@ -31,8 +31,11 @@ public class AIController : MonoBehaviour
         attacking = false;
         screaming = false;
         screamed = false;
-        chasing = false;
-        walking = true;
+        //chasing = false;
+        //walking = true;
+        chasing = true;
+
+
         targetDestinationIndex = 0;
         teleportTargetIndex = 0;
         currentDest = destinations[targetDestinationIndex];
@@ -49,6 +52,7 @@ public class AIController : MonoBehaviour
     {
 
         distance = Vector3.Distance(transform.position, player.transform.position);
+
         #region Raycast
         if (player.activeSelf)
         {
@@ -206,7 +210,8 @@ public class AIController : MonoBehaviour
         Debug.Log("teleport");
         chasing = true;
         attacking = false;
-
+        aiAnim.SetTrigger("chase");
+        StartCoroutine("chaseRoutine");
         if (teleportTargetIndex > TeleportTargetAmount)
         {
             teleportTargetIndex = 0;
@@ -221,6 +226,19 @@ public class AIController : MonoBehaviour
             teleportTargetIndex++;
         }
 
+    }
+    public void startChase() // use EndingSequenceStart.cs
+    {
+        screamed = true;
+        screaming = false;
+        walking = false;
+        Debug.Log("startChase() screamed: " + screamed);
+        Debug.Log("startChase() screaming: " + screaming);
+        Debug.Log("startChase() walking: " + walking);
+        aiAnim.SetTrigger("chase");
+        StartCoroutine("chaseRoutine");
+        chasing = true;
+        Debug.Log("startChase() chasing: " + chasing);
     }
     public void stopChase()
     {
