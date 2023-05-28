@@ -9,7 +9,7 @@ public class ToEndingCredit : MonoBehaviour
     {
         if(other.tag =="Player")
         {
-            SceneManager.LoadScene(9); // Ending Credit
+            SceneManager.LoadScene("Ending"); // Ending Credit
         }
     }
 }

@@ -11,6 +11,7 @@ public class FlickerLight : MonoBehaviour
     public GameObject _light;
     private void Start()
     {
+        myRenderer = GetComponent<Renderer>();
         myRenderer.enabled = false;
     }
     void Update()

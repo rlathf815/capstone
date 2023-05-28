@@ -14,6 +14,7 @@ public class EndingSequenceStart : MonoBehaviour
     public GameObject subCam;
     public AudioClip Scream_c;
     public AudioClip DoorShut_c;
+    public AIController controller;
 
     private AudioSource Scream;
     private AudioSource DoorShut;
@@ -36,15 +37,12 @@ public class EndingSequenceStart : MonoBehaviour
 
     }
 
-
     private IEnumerator endingSequenceStart()
     {
 
         yield return new WaitForSeconds(0.5f);
         zombie.SetTrigger("scream");
         yield return new WaitForSeconds(0.6f);
-
-        Scream.Play();
 
         yield return new WaitForSeconds(2.0f);
         DoorShut.Play();
@@ -58,6 +56,11 @@ public class EndingSequenceStart : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         scream.SetActive(false);
         ai.SetActive(true);
-
+        startChase();
+    }
+    private void startChase()
+    {
+        controller.StartCoroutine("chaseRoutine");
+        controller.chasing = true;
     }
 }
