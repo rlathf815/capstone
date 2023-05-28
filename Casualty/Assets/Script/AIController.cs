@@ -191,6 +191,7 @@ public class AIController : MonoBehaviour
     private void PlayScreamAudio()
     {
         audioScream.Play();
+        Debug.Log("AI scream played");
     }
     private void PlayFootstep()
     {
