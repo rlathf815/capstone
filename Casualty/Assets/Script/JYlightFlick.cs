@@ -8,12 +8,13 @@ public class JYlightFlick : MonoBehaviour
     public float intervalMax = 1f; // 최대 주기
 
     public GameObject lightBulb;
-
+    private Renderer rend;
     private float timer; // 주기 타이머
     private float nextFlcikTime; // 다음 회전 시간
 
     void Start()
     {
+        rend = GetComponent<Renderer>();
         nextFlcikTime = GetNextFlcikTime();
     }
 
@@ -26,10 +27,12 @@ public class JYlightFlick : MonoBehaviour
         {
             if (lightBulb.activeSelf)
             {
+                rend.enabled = false;
                 lightBulb.SetActive(false);
             }
             else if (lightBulb.activeSelf == false)
             {
+                rend.enabled = true;
                 lightBulb.SetActive(true);
             }
 

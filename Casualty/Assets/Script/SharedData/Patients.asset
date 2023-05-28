@@ -16,12 +16,12 @@ MonoBehaviour:
   list: []
   initial: 0
   patient1: 1
-  patient2: 0
-  patient3: 0
-  dillemaPatient: 0
+  patient2: 1
+  patient3: 1
+  dillemaPatient: 1
   dillemaRunOver: 0
   bodyParked: 0
   HorrorInitial: 0
-  hasEntered: 1
+  hasEntered: 0
   horrorPatient: 0
   glitchOn: 0
