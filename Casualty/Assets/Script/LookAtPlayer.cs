@@ -11,7 +11,7 @@ public class LookAtPlayer : MonoBehaviour
     public float distance = 5.0f;
     public float speed = 5.0f;
     public float minDistance = 1.5f;//얼마나 붙어올지
-    public float maxDistance = 2.0f;//일정거리
+    public float maxDistance = 5.0f;//일정거리
     public Vector3 velocity;
     private Animator animator;
     public float currentDistance;
@@ -23,6 +23,8 @@ public class LookAtPlayer : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClip;
     public AudioClip Jumpscare_sound;
+
+    private float animatorSpeed = 1.0f;
 
     public GameObject Player;
     //private Rigidbody rb;
@@ -55,16 +57,38 @@ public class LookAtPlayer : MonoBehaviour
 
             // 일정거리를 유지하며 플레이어를 따라 이동
             currentDistance = Vector3.Distance(transform.position, playerTransform.position);
-            if (currentDistance > 6.0f)
+            if (transform.position.x <= -103f)
+            {//-133 x포지션이 귀신이 문앞에 도달하는건데, 가끔 문을 침범함. 고로 아예 멈추게 하였음.
+             //추가로 이 멈춘상태에서 적절한 애니메이션이 있는지도 찾아볼 예정임.
+             //velocity = transform.forward * 0;
+                animator.speed = 0f;
+                transform.position += transform.forward * 0 * Time.deltaTime;
+            }else if (currentDistance > maxDistance*3)
             {//5이상 멀어지면 좀더 빨라짐.
+                animatorSpeed = 2.0f;
                 //velocity = transform.forward * speed * 1.2f;
-                transform.position += transform.forward * speed * 1.2f * Time.deltaTime;
+                transform.position += transform.forward * speed * animatorSpeed * Time.deltaTime;
+                animator.speed = animatorSpeed;
             }
-            else if (currentDistance <= 12.0f && currentDistance > maxDistance)
+            else if (currentDistance > maxDistance)
             {
+                animatorSpeed = 1.5f;
                 //velocity = transform.forward * speed;
-                transform.position += transform.forward * speed * Time.deltaTime;
+                transform.position += transform.forward * speed* animatorSpeed * Time.deltaTime;
+                animator.speed = animatorSpeed;
             }
+            else if(currentDistance < maxDistance)
+            {
+                animatorSpeed = 1.0f;
+                transform.position += transform.forward * speed *animatorSpeed* Time.deltaTime;
+                animator.speed = animatorSpeed;
+            }else if(currentDistance < 2.0f)
+            {
+                animatorSpeed = 2.0f;
+                transform.position += transform.forward * speed * animatorSpeed * Time.deltaTime;
+                animator.speed = animatorSpeed;
+            }
+
             
             if (currentDistance < minDistance && sharedData.dillemaRunOver == false)
             {
@@ -72,22 +96,17 @@ public class LookAtPlayer : MonoBehaviour
                 //velocity = -transform.forward * speed;
             }
 
-            if (transform.position.x <= -132.5f)
-            {//-133 x포지션이 귀신이 문앞에 도달하는건데, 가끔 문을 침범함. 고로 아예 멈추게 하였음.
-             //추가로 이 멈춘상태에서 적절한 애니메이션이 있는지도 찾아볼 예정임.
-             //velocity = transform.forward * 0;
-                transform.position += transform.forward * 0 * Time.deltaTime;
-            }
+            
 
             //Rigidbody rigidbody = GetComponent<Rigidbody>();
             //rigidbody.velocity = new Vector3(velocity.x, rigidbody.velocity.y, velocity.z);
 
-            if (timer <= 0.75f)
+            if (timer <= 0.75f * (1/animatorSpeed))
             {
                 timer += Time.deltaTime;
 
             }
-            else if (timer > 0.75f)
+            else if (timer > 0.75f * (1 / animatorSpeed))
             {
                 audioSource.PlayOneShot(audioClip);
                 timer = 0f;

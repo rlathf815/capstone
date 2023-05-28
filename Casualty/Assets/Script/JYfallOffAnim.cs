@@ -35,7 +35,8 @@ public class JYfallOffAnim : MonoBehaviour
 
     private IEnumerator sec()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(4.0f);
+
         audioSource.PlayOneShot(audioSource.clip);
     }
 }

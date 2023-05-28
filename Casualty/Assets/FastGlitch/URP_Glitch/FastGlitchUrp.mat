@@ -9,7 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: FastGlitchUrp
   m_Shader: {fileID: 4800000, guid: 50e398f05f7e5754cbdeb9d53637d37a, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - FRAME
+  - PIXEL
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
