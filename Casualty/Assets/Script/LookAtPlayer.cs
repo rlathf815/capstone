@@ -16,6 +16,9 @@ public class LookAtPlayer : MonoBehaviour
     private Animator animator;
     public float currentDistance;
 
+    public GameObject body;
+    public GameObject RagDoll;
+
     public bool triggerGhost = false;//귀신이 작동하게되는 선
 
     private float timer;
@@ -31,6 +34,7 @@ public class LookAtPlayer : MonoBehaviour
 
     private void Start()
     {
+        
         animator = GetComponent<Animator>();
         animator.applyRootMotion = true;
         sharedData.dillemaRunOver = false; // 딜레마씬 입장씨 한번 초기화
@@ -57,13 +61,19 @@ public class LookAtPlayer : MonoBehaviour
 
             // 일정거리를 유지하며 플레이어를 따라 이동
             currentDistance = Vector3.Distance(transform.position, playerTransform.position);
-            if (transform.position.x <= -103f)
+
+            if (transform.position.x <= -100f)
             {//-133 x포지션이 귀신이 문앞에 도달하는건데, 가끔 문을 침범함. 고로 아예 멈추게 하였음.
              //추가로 이 멈춘상태에서 적절한 애니메이션이 있는지도 찾아볼 예정임.
              //velocity = transform.forward * 0;
-                animator.speed = 0f;
-                transform.position += transform.forward * 0 * Time.deltaTime;
-            }else if (currentDistance > maxDistance*3)
+                animator.StopPlayback();//애니메이션멈춤
+                body.SetActive(false);
+                RagDoll.SetActive(true);
+                audioSource.Stop();
+
+                transform.position = transform.position;
+            }
+            else if (currentDistance > maxDistance*3)
             {//5이상 멀어지면 좀더 빨라짐.
                 animatorSpeed = 2.0f;
                 //velocity = transform.forward * speed * 1.2f;

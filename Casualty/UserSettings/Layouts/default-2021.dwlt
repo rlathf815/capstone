@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 49835
+  controlID: 133
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 49836
+  controlID: 50
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -299,9 +299,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -141, y: 149}
+      snapOffset: {x: 101, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 1
+      snapCorner: 0
       id: unity-grid-and-snap-toolbar
       index: 1
       layout: 1
@@ -513,9 +513,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 15.508188, y: 0.9683711, z: 37.150616}
+    m_Target: {x: -32.708015, y: 2.0593226, z: 25.199112}
     speed: 2
-    m_Value: {x: 15.508188, y: 0.9683711, z: 37.150616}
+    m_Value: {x: -32.708015, y: 2.0593226, z: 25.199112}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -562,13 +562,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.061018024, y: 0.5299258, z: -0.038201373, w: -0.8459222}
+    m_Target: {x: -0.0329562, y: -0.9659425, z: 0.14588133, w: -0.21505259}
     speed: 2
-    m_Value: {x: -0.0609123, y: 0.53077275, z: -0.038262486, w: -0.844456}
+    m_Value: {x: -0.03292888, y: -0.9651417, z: 0.14576039, w: -0.21487431}
   m_Size:
-    m_Target: 2.6811678
+    m_Target: 0.000043504693
     speed: 2
-    m_Value: 2.6811678
+    m_Value: 0.000043504693
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -623,10 +623,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 4}
-      m_SelectedIDs: 086bfcff
-      m_LastClickedID: -234744
-      m_ExpandedIDs: 086bfcffda7bfcffdeb9fcff1430fdff2630fdff4832fdff8632fdffc46afdffbe44feff3047fefff876feff5aadfefff265ffff5274ffff6474ffff8676ffffc476ffff2a94ffff3a9bffffe6acffff04c2ffff34fbffff008c00004a8c0000aa8c00007cb9000046bc0000fac00000b6e900005a4d0200cacf0200acd20200f2fe0300d4010400
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: e47bffff18baffffd6c5fffff8c5ffff9ef2ffff36f6ffffdcb90000c4bd0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1011,22 +1011,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\UnityGit\capstone\Casualty
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: ac880000
-    m_LastClickedID: 34988
-    m_ExpandedIDs: 00000000ac88000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 144}
+    m_SelectedIDs: ce730000
+    m_LastClickedID: 29646
+    m_ExpandedIDs: 0000000054730000ce73000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1054,7 +1054,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ac88000000ca9a3bffffff7f
+    m_ExpandedIDs: 0000000054730000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

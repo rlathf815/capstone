@@ -23,7 +23,7 @@ public class JYfallOffAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!triggerFall && lookAtPlayer.triggerGhost)
+        if (!triggerFall && lookAtPlayer.triggerGhost && Player.transform.position.z > 23.8f)
         {
             StartCoroutine(sec());
             triggerFall = true;
@@ -35,7 +35,7 @@ public class JYfallOffAnim : MonoBehaviour
 
     private IEnumerator sec()
     {
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(1.2f);
 
         audioSource.PlayOneShot(audioSource.clip);
     }
