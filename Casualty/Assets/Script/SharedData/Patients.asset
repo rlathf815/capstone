@@ -19,9 +19,9 @@ MonoBehaviour:
   patient2: 1
   patient3: 1
   dillemaPatient: 1
-  dillemaRunOver: 0
+  dillemaRunOver: 1
   bodyParked: 1
   HorrorInitial: 0
-  hasEntered: 0
+  hasEntered: 1
   horrorPatient: 1
   glitchOn: 0

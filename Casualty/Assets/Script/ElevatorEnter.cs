@@ -39,7 +39,7 @@ public class ElevatorEnter : MonoBehaviour
     }
     private IEnumerator SceneChange()
     {
-        yield return new WaitForSeconds(5.3f);
+        yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("Dilemma");
 
 
