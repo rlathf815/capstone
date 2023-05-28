@@ -8,6 +8,8 @@ public class HororSceneManage : MonoBehaviour
     public SharedData sharedData;
     public GameObject Player;
     public GameObject patient;
+    public GameObject patient2;
+
     public Transform desiredPosition;
     public GameObject ui1st;
     public GameObject ui2nd;
@@ -21,12 +23,24 @@ public class HororSceneManage : MonoBehaviour
             Player.transform.rotation = desiredPosition.rotation;
             
         }
-        else 
+        //else 
            // sharedData.HorrorInitial = false;
       
-        if(sharedData.horrorPatient==true)
+        if(sharedData.horrorPatient&&!sharedData.horrorPatient2)
         {
             patient.SetActive(false);
+            patient2.SetActive(true);
+
+            Debug.Log("horrorpatient1 clear");
+
+        }
+        else if (sharedData.horrorPatient && sharedData.horrorPatient2)
+        {
+            patient.SetActive(false);
+
+            patient2.SetActive(false);
+            Debug.Log("horrorpatient2 clear");
+
         }
         sharedData.glitchOn = false;
 

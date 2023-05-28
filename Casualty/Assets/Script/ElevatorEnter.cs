@@ -27,12 +27,12 @@ public class ElevatorEnter : MonoBehaviour
         {
 
             Debug.Log("entered elevator");
-            if (sharedData.bodyParked == true)
+            if (sharedData.bodyParked && !sharedData.bodyParked2)
             {
                 StartCoroutine(SceneChange());
                 hasCoroutineStarted = true;
-
             }
+ 
 
         }
 
@@ -41,7 +41,6 @@ public class ElevatorEnter : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("Dilemma");
-
-
     }
+
 }

@@ -15,34 +15,42 @@ public class CartController : MonoBehaviour
     public CanvasGroup alex;
     public GameObject Sarah;
     public CanvasGroup sarah;
-
+    public GameObject You;
+    public CanvasGroup you;
 
     private void Start()
     {
-        if (sharedData.dillemaPatient != 0)
+        if (!sharedData.horrorPatient2)
         {
-            Debug.Log("patient killed");
-            if(sharedData.dillemaPatient ==1)
+            if (sharedData.dillemaPatient != 0)
             {
-                Alex.SetActive(false);
-                StartCoroutine(subtitle(Sarah, sarah));
+                Debug.Log("patient killed");
+                if (sharedData.dillemaPatient == 1)
+                {
+                    Alex.SetActive(false);
+                    StartCoroutine(subtitle(Sarah, sarah));
+                }
+                else if (sharedData.dillemaPatient == 2)
+                {
+                    Sarah.SetActive(false);
+                    StartCoroutine(subtitle(Alex, alex));
+                }
+                cart.SetActive(true);
             }
-            else if(sharedData.dillemaPatient ==2)
+
+            else
             {
+                Debug.Log("patient not yet killed");
                 Sarah.SetActive(false);
-                StartCoroutine(subtitle(Alex, alex));
+                Alex.SetActive(false);
+                cart.SetActive(false);
             }
-            cart.SetActive(true);
         }
-            
-        else
+        else if(sharedData.horrorPatient2)
         {
-            Debug.Log("patient not yet killed");
-            Sarah.SetActive(false);
-            Alex.SetActive(false);
-            cart.SetActive(false);
+            StartCoroutine(subtitle(You, you));
+
         }
-            
         offset = transform.position - player.position;
         sharedData.bodyParked = false;
 
@@ -80,6 +88,10 @@ public class CartController : MonoBehaviour
             cart.SetActive(false);
             newCart.SetActive(true);
             sharedData.bodyParked = true;
+            if(sharedData.horrorPatient2)
+            {
+                sharedData.bodyParked2 = true;
+            }
         }
 
     }
