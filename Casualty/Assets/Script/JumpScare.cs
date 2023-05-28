@@ -32,7 +32,7 @@ public class JumpScare : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(sharedData.dillemaRunOver == true && this.transform.position.x > -134)
+        if(sharedData.dillemaRunOver == true && this.transform.position.x > -103)
         {//¿‚«˚¿ª ∂ß
 
             //Quaternion rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y-180f, transform.rotation.z);

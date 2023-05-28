@@ -17,7 +17,7 @@ public class DilemmaDisapear : MonoBehaviour
 
     private void Update()
     {
-        if (Player.transform.position.x < transform.position.x && !isDestroying)
+        if (Player.transform.position.x-2.0f < transform.position.x && !isDestroying)
         {
             audioSource.PlayOneShot(whisper);
             StartCoroutine(DestroyDelayed());

@@ -43,8 +43,8 @@ public class DilemmaMapScript : MonoBehaviour
             }
             */
 
-            if (transform.position.x >= -120)
-            {
+            if (transform.position.x >= -90)
+            {//30거리 줄어들었음.
                 if (distance < distanceToPlayer && isMoving)
                 {
                     // 일정 거리 이하로 가까워졌을 때, 멈추도록 합니다.
@@ -56,13 +56,13 @@ public class DilemmaMapScript : MonoBehaviour
                     isMoving = true;
                 }
             }
-            else if (transform.position.x < -120)
+            else if (transform.position.x < -90)
             {
                 isMoving = false;
             }
 
 
-            if (Player.transform.position.x < -134.5 && sharedData.dillemaRunOver == false)
+            if (Player.transform.position.x < -104.5 && sharedData.dillemaRunOver == false)
             {//엘리베이터 안에 들어갔을 때
 
                 sharedData.dillemaRunOver = true;
@@ -84,7 +84,7 @@ public class DilemmaMapScript : MonoBehaviour
     }
     private IEnumerator YouEscaped()
     {
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(3.0f);
 
         SceneManager.LoadScene("HorrorScene");
     }
