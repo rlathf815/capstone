@@ -18,7 +18,7 @@ public class EndingSequenceStart : MonoBehaviour
 
     private AudioSource Scream;
     private AudioSource DoorShut;
-
+    private bool screamed;
 
     void Start()
     {
@@ -33,8 +33,7 @@ public class EndingSequenceStart : MonoBehaviour
         mainCam.transform.position = new Vector3(-1.14f, 1.2f, 15.263f);
         Scream = GetComponent<AudioSource>();
         DoorShut = GetComponent<AudioSource>();
-
-
+        screamed = false;
     }
 
     private IEnumerator endingSequenceStart()
@@ -42,8 +41,13 @@ public class EndingSequenceStart : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         zombie.SetTrigger("scream");
-        yield return new WaitForSeconds(0.6f);
-
+        yield return new WaitForSeconds(0.2f);
+        if(!screamed)
+        {
+            Debug.Log("Scream.Play()");
+            screamed = true;
+            Scream.Play();
+        }
         yield return new WaitForSeconds(2.0f);
         DoorShut.Play();
         yield return new WaitForSeconds(0.5f);
