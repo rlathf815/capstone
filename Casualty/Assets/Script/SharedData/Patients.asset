@@ -23,5 +23,5 @@ MonoBehaviour:
   bodyParked: 0
   HorrorInitial: 0
   hasEntered: 0
-  horrorPatient: 0
+  horrorPatient: 1
   glitchOn: 0

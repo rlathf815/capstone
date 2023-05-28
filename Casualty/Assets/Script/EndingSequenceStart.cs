@@ -16,8 +16,8 @@ public class EndingSequenceStart : MonoBehaviour
     public AudioClip DoorShut_c;
     public AIController controller;
 
-    private AudioSource Scream;
-    private AudioSource DoorShut;
+    private AudioSource audiosource;
+    
     private bool screamed;
 
     void Start()
@@ -31,8 +31,8 @@ public class EndingSequenceStart : MonoBehaviour
         //shutdown.SetTrigger("ShutdownOn");
         StartCoroutine(endingSequenceStart());
         mainCam.transform.position = new Vector3(-1.14f, 1.2f, 15.263f);
-        Scream = GetComponent<AudioSource>();
-        DoorShut = GetComponent<AudioSource>();
+        audiosource = GetComponent<AudioSource>();
+
         screamed = false;
     }
 
@@ -42,15 +42,18 @@ public class EndingSequenceStart : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         zombie.SetTrigger("scream");
         yield return new WaitForSeconds(0.2f);
-        if(!screamed)
-        {
-            Debug.Log("Scream.Play()");
-            screamed = true;
-            Scream.Play();
-        }
+        // if(!screamed)
+        // {
+        //     Debug.Log("Scream.Play()");
+        //     screamed = true;
+        //     Scream.Play();
+        // }
+        audiosource.PlayOneShot(Scream_c);
+        yield return new WaitForSeconds(1.0f);
+        //DoorShut.Play();
+        audiosource.PlayOneShot(DoorShut_c);
+
         yield return new WaitForSeconds(2.0f);
-        DoorShut.Play();
-        yield return new WaitForSeconds(0.5f);
 
         shutdown.SetTrigger("ShutdownOn");
         yield return new WaitForSeconds(2.0f);
@@ -60,6 +63,7 @@ public class EndingSequenceStart : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         scream.SetActive(false);
         ai.SetActive(true);
+        Debug.Log("AI Scream");
         controller.startChase();
     }
 }
