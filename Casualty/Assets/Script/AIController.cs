@@ -207,7 +207,8 @@ public class AIController : MonoBehaviour
     // Attack Animation - Animation Event에서 사용
     private void teleport()
     {
-        Debug.Log("teleport");
+        //Debug.Log("teleport");
+        StopAllCoroutines();
         chasing = true;
         attacking = false;
         aiAnim.SetTrigger("chase");
