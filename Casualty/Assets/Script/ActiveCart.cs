@@ -11,6 +11,7 @@ public class ActiveCart : MonoBehaviour
 
     private void Start()
     {
+        
         if (sharedData.dillemaPatient != 0)
         {
             Debug.Log("patient killed");
