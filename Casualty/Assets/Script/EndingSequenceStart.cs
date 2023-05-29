@@ -14,9 +14,11 @@ public class EndingSequenceStart : MonoBehaviour
     public GameObject subCam;
     public AudioClip Scream_c;
     public AudioClip DoorShut_c;
-    public AIController controller;
-    public GameObject pointLight1, pointLight2;
+    public AudioClip glass_c;
 
+    public AIController controller;
+    public GameObject pointLight1, pointLight2, pointLight3;
+    public Renderer rend;
     private AudioSource audiosource;
     
     private bool screamed;
@@ -51,11 +53,22 @@ public class EndingSequenceStart : MonoBehaviour
         // }
 
         audiosource.PlayOneShot(Scream_c);
+
+
         yield return new WaitForSeconds(0.8f);
         //DoorShut.Play();
+        
         audiosource.PlayOneShot(DoorShut_c);
+        yield return new WaitForSeconds(1.0f);
+        audiosource.PlayOneShot(glass_c); 
+        yield return new WaitForSeconds(0.2f);
 
-        yield return new WaitForSeconds(2.0f);
+        pointLight1.SetActive(false);
+        pointLight2.SetActive(false);
+        pointLight3.SetActive(false);
+        rend.enabled = false;
+
+        yield return new WaitForSeconds(0.8f);
 
         shutdown.SetTrigger("ShutdownOn");
         yield return new WaitForSeconds(2.0f);
