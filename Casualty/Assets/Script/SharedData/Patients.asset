@@ -18,12 +18,12 @@ MonoBehaviour:
   patient1: 1
   patient2: 1
   patient3: 1
-  dillemaPatient: 1
-  dillemaRunOver: 0
+  dillemaPatient: 2
+  dillemaRunOver: 1
   bodyParked: 1
-  HorrorInitial: 0
-  hasEntered: 1
-  horrorPatient: 1
-  horrorPatient2: 1
-  bodyParked2: 1
+  HorrorInitial: 1
+  hasEntered: 0
+  horrorPatient: 0
+  horrorPatient2: 0
+  bodyParked2: 0
   glitchOn: 0
