@@ -49,6 +49,7 @@ public class EndingSequenceStart : MonoBehaviour
         //     screamed = true;
         //     Scream.Play();
         // }
+
         audiosource.PlayOneShot(Scream_c);
         yield return new WaitForSeconds(0.8f);
         //DoorShut.Play();
