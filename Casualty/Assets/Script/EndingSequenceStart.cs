@@ -39,9 +39,9 @@ public class EndingSequenceStart : MonoBehaviour
     private IEnumerator endingSequenceStart()
     {
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.9f);
         zombie.SetTrigger("scream");
-        yield return new WaitForSeconds(0.2f);
+       // yield return new WaitForSeconds(0.2f);
         // if(!screamed)
         // {
         //     Debug.Log("Scream.Play()");
@@ -49,7 +49,7 @@ public class EndingSequenceStart : MonoBehaviour
         //     Scream.Play();
         // }
         audiosource.PlayOneShot(Scream_c);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.8f);
         //DoorShut.Play();
         audiosource.PlayOneShot(DoorShut_c);
 
