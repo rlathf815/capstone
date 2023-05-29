@@ -11,18 +11,34 @@ public class ActiveCart : MonoBehaviour
 
     private void Start()
     {
-        
-        if (sharedData.dillemaPatient != 0)
+        if (sharedData.HorrorInitial)
         {
-            Debug.Log("patient killed");
-            cart.SetActive(true);
-        }
+            if (sharedData.dillemaPatient != 0)
+            {
+                Debug.Log("patient killed");
+                cart.SetActive(true);
+            }
 
+            else
+            {
+                Debug.Log("patient not yet killed");
+
+                cart.SetActive(false);
+            }
+            Debug.Log("not horrorScene yet");
+
+        }
         else
         {
-            Debug.Log("patient not yet killed");
+            Debug.Log("horrorScene");
 
-            cart.SetActive(false);
+            if ( sharedData.horrorPatient2)
+            {
+                Debug.Log("patient2notKilled");
+
+                cart.SetActive(true);
+
+            }
         }
 
     }

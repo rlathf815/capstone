@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HasEntered : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class HasEntered : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
           sharedData.hasEntered = true;
-
+            if(sharedData.bodyParked && sharedData.bodyParked2)
+                SceneManager.LoadScene("HorrorScene_ending");
         }
     }
 }

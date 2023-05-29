@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/H_StitchMiniGameScene.unity
     guid: b348e69aa3635154a8bf0a2d35109b7e
+  - enabled: 1
+    path: Assets/Scenes/HorrorScene_ending.unity
+    guid: 13bd6ed82775ad14ea7c90355901a403
   m_configObjects: {}

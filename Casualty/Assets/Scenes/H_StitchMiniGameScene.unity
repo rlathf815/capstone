@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.029087335, g: 0.0298977, b: 0.029896766, a: 1}
+  m_IndirectSpecularColor: {r: 0.029087335, g: 0.0298977, b: 0.029896773, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4941,6 +4941,10 @@ PrefabInstance:
     - target: {fileID: 1666490229683266, guid: 9962db9a3ac7c4d46952a749b9404bf6, type: 3}
       propertyPath: m_Name
       value: corpse
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666490229683266, guid: 9962db9a3ac7c4d46952a749b9404bf6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4283680760823604, guid: 9962db9a3ac7c4d46952a749b9404bf6, type: 3}
       propertyPath: m_RootOrder

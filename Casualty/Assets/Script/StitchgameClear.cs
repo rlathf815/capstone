@@ -25,7 +25,11 @@ public class StitchgameClear : MonoBehaviour
             else if(sharedData.dillemaPatient != 0 &&!sharedData.horrorPatient)
                 StartCoroutine(LoadChooseSceneWithDelay());
             else if (sharedData.dillemaPatient != 0 && sharedData.horrorPatient)
-                StartCoroutine(LoadHorrorSceneWithDelay());
+            {
+                sharedData.horrorPatient2 = true;
+                StartCoroutine(LoadHorrorSceneWithDelay());       
+            }
+                
 
         }
 
