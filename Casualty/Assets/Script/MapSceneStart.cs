@@ -25,6 +25,9 @@ public class MapSceneStart : MonoBehaviour
             sharedData.dillemaRunOver = false;
             sharedData.horrorPatient = false;//흑인환자 스티치씬에서 오류나는것 방지.
             sharedData.hasEntered = false;
+            sharedData.HorrorInitial = true;
+            sharedData.horrorPatient2 = false;
+            sharedData.bodyParked2 = false;
         }
         sharedData.glitchOn = false;
 

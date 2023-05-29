@@ -18,6 +18,8 @@ public class CartController : MonoBehaviour
     public GameObject You;
     public CanvasGroup you;
 
+    public GameObject thisCart;
+
     private void Start()
     {
         if (!sharedData.horrorPatient2)
@@ -48,10 +50,12 @@ public class CartController : MonoBehaviour
         }
         else if(sharedData.horrorPatient2)
         {
+            Debug.Log("test¿©°í»ý");
             StartCoroutine(subtitle(You, you));
+            cart.SetActive(true);
 
         }
-        offset = transform.position - player.position;
+        offset = thisCart.transform.position - player.position;
         sharedData.bodyParked = false;
 
 
@@ -66,8 +70,8 @@ public class CartController : MonoBehaviour
         Vector3 targetPosition = player.position + mainCamera.transform.forward * offset.magnitude;
         targetPosition.y = player.position.y + heightOffset;
 
-        
-        transform.position = targetPosition;
+
+        thisCart.transform.position = targetPosition;
     }
 
     private void LateUpdate()
