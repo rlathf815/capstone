@@ -128,7 +128,6 @@ public class AIController : MonoBehaviour
             aiAnim.ResetTrigger("idle");
             aiAnim.ResetTrigger("attack");
             aiAnim.SetTrigger("walk");
-            Debug.Log("ai.remainingDistance: " + ai.remainingDistance);
             if (ai.remainingDistance <= ai.stoppingDistance)
             {
                 aiAnim.ResetTrigger("chase");
@@ -193,10 +192,9 @@ public class AIController : MonoBehaviour
                 // 기존 플레이어 위치를 사용하면 사라진 플레이어 객체 위치를 기반으로 판단하게됨
                 // 그러나 숨은 플레이어 객체는 캐비넷마다 다르게 구현되어있다. 따라서 메인 카메라 위치를 기반으로 판단
                 // 캐비넷 앞에서 AI가 멈추게끔 구현하는게 자연스러움
-                Vector3 playerForward = Camera.main.transform.position + 2.5f*Camera.main.transform.forward;
-                if (Vector3.Distance(transform.position, playerForward) > 0.05f)
+                if (Vector3.Distance(transform.position, Camera.main.transform.forward) > 0.05f)
                 {
-                    ai.destination = playerForward;
+                    ai.destination = Camera.main.transform.forward;
                 }
                 ai.speed = 0;
                 aiAnim.ResetTrigger("chase");
