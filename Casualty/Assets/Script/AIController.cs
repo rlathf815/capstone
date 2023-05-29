@@ -23,6 +23,9 @@ public class AIController : MonoBehaviour
     public int destinationAmount, TeleportTargetAmount, targetDestinationIndex, teleportTargetIndex, endingSceneAmount;
     public GameObject player;
     public Vector3 rayCastOffset;
+
+    public static bool isPlayerHiding = false;
+
     private Transform currentDest;
     private Vector3 dest;
     private float distance;
@@ -31,11 +34,8 @@ public class AIController : MonoBehaviour
         attacking = false;
         screaming = false;
         screamed = false;
-        //chasing = false;
-        //walking = true;
+        walking = false;
         chasing = true;
-
-
         targetDestinationIndex = 0;
         teleportTargetIndex = 0;
         currentDest = destinations[targetDestinationIndex];
@@ -50,10 +50,16 @@ public class AIController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
         distance = Vector3.Distance(transform.position, player.transform.position);
-
-        #region Raycast
+        checkRaycast();
+        checkChasing();
+        checkWalking();
+        checkScream();
+        isEnableToAttack();
+        checkAttack();
+    }
+    private void checkRaycast()
+    {
         if (player.activeSelf)
         {
             Vector3 direction = player.transform.position - transform.position;
@@ -63,7 +69,7 @@ public class AIController : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == "Player")
                 {
-                    Debug.Log("hit.collider.gameObject: " + hit.collider.gameObject.transform);
+                    //Debug.Log("hit.collider.gameObject: " + hit.collider.gameObject.transform);
                     walking = false;
                     StopCoroutine("stayIdle");
                     StopCoroutine("chaseRoutine");
@@ -82,10 +88,9 @@ public class AIController : MonoBehaviour
                 }
             }
         }
-        #endregion
-
-        #region chasing
-
+    }
+    private void checkChasing()
+    {
         if (chasing && distance >= catchDistance)
         {
             if (!audioChase.isPlaying)
@@ -105,9 +110,9 @@ public class AIController : MonoBehaviour
             aiAnim.ResetTrigger("attack");
             aiAnim.SetTrigger("chase");
         }
-        #endregion
-
-        #region walking
+    }
+    private void checkWalking()
+    {
         if (walking)
         {
             if (!audioBackground.isPlaying)
@@ -117,11 +122,13 @@ public class AIController : MonoBehaviour
             dest = currentDest.position;
             ai.destination = dest;
             ai.speed = walkSpeed;
+            ai.transform.LookAt(dest);
             aiAnim.ResetTrigger("scream");
             aiAnim.ResetTrigger("chase");
             aiAnim.ResetTrigger("idle");
             aiAnim.ResetTrigger("attack");
             aiAnim.SetTrigger("walk");
+            Debug.Log("ai.remainingDistance: " + ai.remainingDistance);
             if (ai.remainingDistance <= ai.stoppingDistance)
             {
                 aiAnim.ResetTrigger("chase");
@@ -133,9 +140,9 @@ public class AIController : MonoBehaviour
                 walking = false;
             }
         }
-        #endregion
-
-        #region screaming
+    }
+    private void checkScream()
+    {
         if (screaming)
         {
             Debug.Log("screaming");
@@ -150,14 +157,14 @@ public class AIController : MonoBehaviour
             aiAnim.SetTrigger("scream");
             screaming = false;
         }
-        #endregion
-
-        #region attacking
+    }
+    private void checkAttack()
+    {
 
         if (attacking)
         {
             attacking = false;
-            Debug.Log("attacking");
+            //Debug.Log("attacking");
             // 정지 상태에서 attack
             ai.speed = 0;
             transform.LookAt(player.transform.position);
@@ -170,28 +177,48 @@ public class AIController : MonoBehaviour
             chasing = true;
             StopCoroutine("attack");
         }
-
-        #endregion
-
-        #region check hit
-        if (distance <= catchDistance && player.activeSelf) // 가까이 붙으면 잡힌걸로 판정
-        {
-            Debug.Log("catch, distance: " + distance);
-            // 잡혔을때 주어진 위치로 이동 //
-            chasing = false;
-            StartCoroutine("attack");
-            attacking = true;
-        }
-        #endregion
-
-
     }
-
+    private void isEnableToAttack()
+    {
+        // 공격 범위 판정
+        if (distance <= catchDistance)
+        {
+            // 캐비넷에 숨어있으면 공격판정 x
+            // 바로 돌아가는게 아니라 앞에 잠깐 머물다 walking 상태로 돌아감
+            if (isPlayerHiding && chasing) 
+            {
+                chasing = false;
+                walking = false;
+                // 캐비넷에 숨었을때는 플레이어 객체가 바뀐다.
+                // 기존 플레이어 위치를 사용하면 사라진 플레이어 객체 위치를 기반으로 판단하게됨
+                // 그러나 숨은 플레이어 객체는 캐비넷마다 다르게 구현되어있다. 따라서 메인 카메라 위치를 기반으로 판단
+                // 캐비넷 앞에서 AI가 멈추게끔 구현하는게 자연스러움
+                Vector3 playerForward = Camera.main.transform.position + 2.5f*Camera.main.transform.forward;
+                if (Vector3.Distance(transform.position, playerForward) > 0.05f)
+                {
+                    ai.destination = playerForward;
+                }
+                ai.speed = 0;
+                aiAnim.ResetTrigger("chase");
+                aiAnim.ResetTrigger("walk");
+                aiAnim.SetTrigger("idle");
+                StartCoroutine("stayIdle");
+            }
+            if (!isPlayerHiding) // 가까이 붙으면 잡힌걸로 판정, 숨은상태라면 Player객체 비활성화
+            {
+                //Debug.Log("catch, distance: " + distance);
+                // 잡혔을때 주어진 위치로 이동 //
+                chasing = false;
+                StartCoroutine("attack");
+                attacking = true;
+            }
+        }
+    }
     // Scream Animation End frame - Animation Event
     private void PlayScreamAudio()
     {
         audioScream.Play();
-        Debug.Log("AI scream played");
+       // Debug.Log("AI scream played");
     }
     private void PlayFootstep()
     {
@@ -209,38 +236,43 @@ public class AIController : MonoBehaviour
     private void teleport()
     {
         //Debug.Log("teleport");
-        StopAllCoroutines();
-        chasing = true;
-        attacking = false;
-        aiAnim.SetTrigger("chase");
-        StartCoroutine("chaseRoutine");
-        if (teleportTargetIndex > TeleportTargetAmount)
+        if(player.activeSelf)
         {
-            teleportTargetIndex = 0;
-            player.transform.position = TeleportTargetObject[teleportTargetIndex].transform.position;
-            player.transform.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
-            teleportTargetIndex++;
-        }
-        else
-        {
-            player.transform.position = TeleportTargetObject[teleportTargetIndex].transform.position;
-            player.transform.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
-            teleportTargetIndex++;
+            StopAllCoroutines();
+            chasing = true;
+            attacking = false;
+            aiAnim.SetTrigger("chase");
+            StartCoroutine("chaseRoutine");
+            if (teleportTargetIndex > TeleportTargetAmount)
+            {
+                teleportTargetIndex = 0;
+                player.transform.position = TeleportTargetObject[teleportTargetIndex].transform.position;
+                player.transform.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
+                teleportTargetIndex++;
+            }
+            else
+            {
+                player.transform.position = TeleportTargetObject[teleportTargetIndex].transform.position;
+                player.transform.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
+                teleportTargetIndex++;
+            }
         }
 
     }
+
+
     public void startChase() // use EndingSequenceStart.cs
     {
         screamed = true;
         screaming = false;
         walking = false;
-        Debug.Log("startChase() screamed: " + screamed);
-        Debug.Log("startChase() screaming: " + screaming);
-        Debug.Log("startChase() walking: " + walking);
+        //Debug.Log("startChase() screamed: " + screamed);
+        //Debug.Log("startChase() screaming: " + screaming);
+        //Debug.Log("startChase() walking: " + walking);
         aiAnim.SetTrigger("chase");
         StartCoroutine("chaseRoutine");
         chasing = true;
-        Debug.Log("startChase() chasing: " + chasing);
+        //Debug.Log("startChase() chasing: " + chasing);
     }
     public void stopChase()
     {
@@ -252,7 +284,7 @@ public class AIController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("targetDestinationIndex: " + targetDestinationIndex);
+        //Debug.Log("targetDestinationIndex: " + targetDestinationIndex);
         if (other.gameObject.tag == "Destination")
         {
             if (targetDestinationIndex < destinationAmount-1)
@@ -269,7 +301,6 @@ public class AIController : MonoBehaviour
     }
     IEnumerator attack() // any state -> attack , attack -> chase
     {
-        Debug.Log("coroutine attack");
         yield return new WaitForSeconds(attackTime);
         chasing = true;
         attacking = false;

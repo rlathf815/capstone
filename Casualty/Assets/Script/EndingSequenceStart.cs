@@ -17,12 +17,13 @@ public class EndingSequenceStart : MonoBehaviour
 
     public Camera mainCam;
     public Camera subCam;
-
+    public AudioListener audioListener;
 
 
     public AIController controller;
     public GameObject pointLight1, pointLight2, pointLight3;
     public Renderer rend;
+    
     private AudioSource audiosource;
     
     private bool screamed;
@@ -90,7 +91,8 @@ public class EndingSequenceStart : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         scream.SetActive(false);
         ai.SetActive(true);
-        Debug.Log("AI Scream");
+        //Debug.Log("AI Scream");
+        audioListener.enabled = false;
         controller.startChase();
     }
 }
