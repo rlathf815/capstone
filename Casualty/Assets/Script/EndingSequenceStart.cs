@@ -80,5 +80,7 @@ public class EndingSequenceStart : MonoBehaviour
         ai.SetActive(true);
         Debug.Log("AI Scream");
         controller.startChase();
+        yield return new WaitForSeconds(60.0f);
+
     }
 }

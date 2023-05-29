@@ -62,6 +62,7 @@ public class PlayerHide : MonoBehaviour
             }
         }
     }
+    
     public void ToCabinet()
     {
         interactable = false;
