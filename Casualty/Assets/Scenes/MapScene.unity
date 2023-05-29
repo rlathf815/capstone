@@ -1476,6 +1476,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &232282568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232282559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c848d553dc6824fa1b3de27499d5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 232282561}
+  mainCamera: {fileID: 1241892411}
+  heightOffset: -0.78
+  cart: {fileID: 1356968259}
+  newCart: {fileID: 1738531595}
+  sharedData: {fileID: 11400000, guid: 66d00ea5a7a98314197f974c9ca10819, type: 2}
+  Alex: {fileID: 1185503751}
+  alex: {fileID: 1185503756}
+  Sarah: {fileID: 1918579198}
+  sarah: {fileID: 1918579203}
+  You: {fileID: 0}
+  you: {fileID: 0}
+  thisCart: {fileID: 0}
 --- !u!1001 &238794095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2716,6 +2741,10 @@ PrefabInstance:
       value: truck_parked
       objectReference: {fileID: 0}
     - target: {fileID: 1124548668989658, guid: d36536a29caa6bb488ba4bb7a6455aa9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124548668989658, guid: d36536a29caa6bb488ba4bb7a6455aa9, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -3702,7 +3731,6 @@ GameObject:
   - component: {fileID: 550448849}
   - component: {fileID: 550448850}
   - component: {fileID: 550448851}
-  - component: {fileID: 550448852}
   m_Layer: 0
   m_Name: scene manager
   m_TagString: Untagged
@@ -3858,21 +3886,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &550448852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550448846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91c456ce711ff254b8d25eaa2abea061, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cart: {fileID: 1356968259}
-  newCart: {fileID: 1738531595}
-  sharedData: {fileID: 11400000, guid: 66d00ea5a7a98314197f974c9ca10819, type: 2}
 --- !u!1 &552881731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4e9bb637798979a4ca9e30741b7e2c77, type: 3}
@@ -9281,6 +9294,7 @@ MonoBehaviour:
   sarah: {fileID: 1918579203}
   You: {fileID: 0}
   you: {fileID: 0}
+  thisCart: {fileID: 0}
 --- !u!65 &1356968264
 BoxCollider:
   m_ObjectHideFlags: 0
