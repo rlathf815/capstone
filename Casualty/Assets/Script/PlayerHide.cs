@@ -41,15 +41,17 @@ public class PlayerHide : MonoBehaviour
                 anim.SetTrigger("open");
                 if(!audioOpen.isPlaying)
                     audioOpen.Play();
+                AIController.isPlayerHiding = true;
             }
         }
         if (hiding)
         {
-            // 숨는 곳 앞까지 왔다가 돌아감
-            if (Vector3.Distance(aiTransform.position, player.transform.position) < loseDistance) 
-            {
-                aiController.stopChase();
-            }
+            //// 숨는 곳 앞까지 왔다가 돌아감
+            //if (Vector3.Distance(aiTransform.position, player.transform.position) < loseDistance) 
+            //{
+            //    Debug.Log("PlayerHide.cs -> stopChase()");
+            //    aiController.stopChase();
+            //}
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 anim.SetTrigger("close");
@@ -59,10 +61,11 @@ public class PlayerHide : MonoBehaviour
                 player.SetActive(true);
                 hidingPlayer.SetActive(false);
                 hiding = false;
+                AIController.isPlayerHiding = false;
             }
         }
     }
-    
+    // animation event
     public void ToCabinet()
     {
         interactable = false;

@@ -10,30 +10,39 @@ public class EndingSequenceStart : MonoBehaviour
     public Animator zombie;
     public GameObject scream;
     public GameObject ai;
-    public GameObject mainCam;
-    public GameObject subCam;
+
     public AudioClip Scream_c;
     public AudioClip DoorShut_c;
     public AudioClip glass_c;
 
+    public Camera mainCam;
+    public Camera subCam;
+    public AudioListener audioListener;
+
+
     public AIController controller;
     public GameObject pointLight1, pointLight2, pointLight3;
     public Renderer rend;
+    
     private AudioSource audiosource;
     
     private bool screamed;
 
     void Start()
     {
-        mainCam.SetActive(false);
-        subCam.SetActive(true);
+        subCam.enabled = true;
+        subCam = Camera.main;
+        mainCam.enabled = false;
+
         camera.speed = 0.3f;
         shutdown.speed = 1.6f;
         scream.SetActive(true);
         ai.SetActive(false);
         //shutdown.SetTrigger("ShutdownOn");
         StartCoroutine(endingSequenceStart());
-        mainCam.transform.position = new Vector3(-1.14f, 1.2f, 15.263f);
+
+        mainCam.transform.LookAt(ai.transform);
+        //mainCam.transform.position = new Vector3(-1.14f, 1.2f, 15.263f);
         audiosource = GetComponent<AudioSource>();
 
         screamed = false;
@@ -73,12 +82,17 @@ public class EndingSequenceStart : MonoBehaviour
         shutdown.SetTrigger("ShutdownOn");
         yield return new WaitForSeconds(2.0f);
 
-        mainCam.SetActive(true);
-        subCam.SetActive(false);
+
+        mainCam.enabled = true;
+        mainCam = Camera.main;
+        subCam.enabled = false;
+
+
         yield return new WaitForSeconds(0.1f);
         scream.SetActive(false);
         ai.SetActive(true);
-        Debug.Log("AI Scream");
+        //Debug.Log("AI Scream");
+        audioListener.enabled = false;
         controller.startChase();
         yield return new WaitForSeconds(60.0f);
 
