@@ -15,6 +15,7 @@ public class EndingSequenceStart : MonoBehaviour
     public AudioClip Scream_c;
     public AudioClip DoorShut_c;
     public AIController controller;
+    public GameObject pointLight1, pointLight2;
 
     private AudioSource audiosource;
     
