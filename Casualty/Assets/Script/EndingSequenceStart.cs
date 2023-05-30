@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EndingSequenceStart : MonoBehaviour
 {
@@ -23,7 +24,14 @@ public class EndingSequenceStart : MonoBehaviour
     public AIController controller;
     public GameObject pointLight1, pointLight2, pointLight3;
     public Renderer rend;
-    
+
+    public GameObject subtitle;
+    public CanvasGroup canvasGroup;
+
+    public TextMeshProUGUI uiTimerText;
+    public TextMeshProUGUI uiTimerInfoText;
+    public GameObject timerUI;
+
     private AudioSource audiosource;
     
     private bool screamed;
@@ -46,6 +54,48 @@ public class EndingSequenceStart : MonoBehaviour
         audiosource = GetComponent<AudioSource>();
 
         screamed = false;
+    }
+    private IEnumerator UIFade(GameObject gameobject, CanvasGroup canvasGroup)
+    {
+        gameobject.SetActive(true);
+
+        canvasGroup.alpha = 0f;
+        while (canvasGroup.alpha < 1f)
+        {
+            canvasGroup.alpha += Time.deltaTime / 0.7f;
+            yield return null;
+        }
+        canvasGroup.alpha = 1f;
+
+        yield return new WaitForSeconds(2f);
+
+        while (canvasGroup.alpha > 0f)
+        {
+            canvasGroup.alpha -= Time.deltaTime / 0.7f;
+            yield return null;
+        }
+        canvasGroup.alpha = 0f;
+
+        gameobject.SetActive(false);
+    }
+    private IEnumerator CountdownTimer()
+    {
+        int timeRemaining = 60;
+
+        while (timeRemaining > 0)
+        {          
+            uiTimerText.text = timeRemaining.ToString();
+
+            yield return new WaitForSeconds(1f);
+
+            timeRemaining--;
+        }
+        if(timeRemaining == 0)
+        {
+            uiTimerText.text = " ";
+            uiTimerInfoText.text = "Gate has opened, run to survive";
+        }
+
     }
 
     private IEnumerator endingSequenceStart()
@@ -86,7 +136,7 @@ public class EndingSequenceStart : MonoBehaviour
         mainCam.enabled = true;
         mainCam = Camera.main;
         subCam.enabled = false;
-
+        StartCoroutine(UIFade(subtitle, canvasGroup));
 
         yield return new WaitForSeconds(0.1f);
         scream.SetActive(false);
@@ -94,5 +144,13 @@ public class EndingSequenceStart : MonoBehaviour
         //Debug.Log("AI Scream");
         audioListener.enabled = false;
         controller.startChase();
+        timerUI.SetActive(true);
+        StartCoroutine(CountdownTimer());
+        yield return new WaitForSeconds(58.0f);
+        audiosource.PlayOneShot(DoorShut_c);
+        yield return new WaitForSeconds(2.0f);
+
+        shutdown.SetTrigger("OpenGate");
+
     }
 }
