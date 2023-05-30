@@ -5,11 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class ToEndingCredit : MonoBehaviour
 {
+    public GameObject fadeIn;
+
+    private void Start()
+    {
+        fadeIn.SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag =="Player")
         {
-            SceneManager.LoadScene("Ending"); // Ending Credit
+
+            StartCoroutine(wait());
         }
+    }
+
+    private IEnumerator wait()
+    {
+        fadeIn.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("ToEnding");
     }
 }
