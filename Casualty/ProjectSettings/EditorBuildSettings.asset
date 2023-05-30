@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HorrorScene_ending.unity
     guid: 13bd6ed82775ad14ea7c90355901a403
+  - enabled: 1
+    path: Assets/Scenes/ToEnding.unity
+    guid: 4c6da18c51ad71f48ab1dc6e27ccfaab
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 1a3c1b2dd50bb104b9809f97d8d96ce2
   m_configObjects: {}
