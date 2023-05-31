@@ -15,8 +15,8 @@ MonoBehaviour:
   patientName: patient3
   description:
   - Remover
-  - Remover
+  - Aed
   - transfusion
   - transfusion
   - Remover
-  - transfusion
+  - Aed

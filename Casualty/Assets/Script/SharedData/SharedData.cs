@@ -26,5 +26,6 @@ public class SharedData : ScriptableObject
     public bool bodyParked2 = false;
 
     public bool isCaught = false;
+    public int  index = 0;
     public bool glitchOn = false;
 }

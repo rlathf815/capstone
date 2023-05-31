@@ -30,6 +30,7 @@ public class AIController : MonoBehaviour
     private Transform currentDest;
     private Vector3 dest;
     private float distance;
+
     private void Init()
     {
         attacking = false;
@@ -258,7 +259,9 @@ public class AIController : MonoBehaviour
             //player.transform.position = new Vector3(-1.143f, 1.2f, 14.5f);
             //player.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             //sharedData.isCaught = true;
-            SceneManager.LoadScene("HorrorScene_ending");
+            sharedData.isCaught = true;
+            sharedData.index ++;
+           SceneManager.LoadScene("HorrorScene_ending");
 
         }
 

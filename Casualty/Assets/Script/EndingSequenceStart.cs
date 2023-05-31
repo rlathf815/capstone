@@ -28,31 +28,69 @@ public class EndingSequenceStart : MonoBehaviour
     public GameObject subtitle;
     public CanvasGroup canvasGroup;
 
+    public GameObject blackOut;
+    public CanvasGroup BO;
+
     public TextMeshProUGUI uiTimerText;
     public TextMeshProUGUI uiTimerInfoText;
     public GameObject timerUI;
 
+    public TextMeshProUGUI run;
+    public TextMeshProUGUI tip;
+
+    public SharedData sharedData;
+
     private AudioSource audiosource;
     
     private bool screamed;
+    
+    private string[] quotes;
+    private string[] tips;
 
     void Start()
     {
-        subCam.enabled = true;
-        subCam = Camera.main;
-        mainCam.enabled = false;
 
-        camera.speed = 0.3f;
-        shutdown.speed = 1.6f;
-        scream.SetActive(true);
-        ai.SetActive(false);
         //shutdown.SetTrigger("ShutdownOn");
 
         // 여기다가 조건문으로,,isCaught false면 오프닝장면부터, true면 검은화면부터,,,
         // 검은화면은 blackoutimage 하나 만들고 UIFade로 넣으면될듯
         // 시작할때 나오는 자막은 chasing(GameObject s, CanvasGroup c) 파라미터로 전달
+        quotes = new string[]
+        {
+            "Run,as you did before.",
+            "You killed me, you murderer",
+            "You can't get away from me.",
+            "Nowhere left to run now.",
+            "Not enough"
+        };
+        tips = new string[]
+        {
+            "You can hide in the cabinet.",
+            "There are 3 cabinets.",
+            "There are cabinets inside the wards, too",
+            "try again.",
+            "Don't use the elevator."
+        };
+        run.text = GetStringFromIndex(0);
+        if (sharedData.isCaught ==false)
+        {
+            subCam.enabled = true;
+            subCam = Camera.main;
+            mainCam.enabled = false;
 
-        StartCoroutine(endingSequenceStart());
+            camera.speed = 0.3f;
+            shutdown.speed = 1.6f;
+            scream.SetActive(true);
+            ai.SetActive(false);
+            StartCoroutine(endingSequenceStart());
+        }         
+        else if(sharedData.isCaught ==true)
+        {
+            mainCam.enabled = true;
+            mainCam = Camera.main;
+            subCam.enabled = false;
+            StartCoroutine(retry(subtitle,canvasGroup, blackOut,BO));
+        }
 
         mainCam.transform.LookAt(ai.transform);
         //mainCam.transform.position = new Vector3(-1.14f, 1.2f, 15.263f);
@@ -60,6 +98,34 @@ public class EndingSequenceStart : MonoBehaviour
 
         screamed = false;
     }
+    private string GetStringFromIndex(int index)
+        {
+            if (index >= 0 && index < quotes.Length)
+            {
+                return quotes[index];
+            }
+            return string.Empty;
+        }
+    private string GetTipsFromIndex(int index)
+    {
+        if (index >= 0 && index < tips.Length)
+        {
+            return tips[index];
+        }
+        return string.Empty;
+    }
+    private void changeTxt()
+    {   
+        if (sharedData.index == quotes.Length)
+            sharedData.index = 0;
+        if (sharedData.index >= 0 && sharedData.index < quotes.Length)
+        {
+            run.text = GetStringFromIndex(sharedData.index);
+            tip.text = GetTipsFromIndex(sharedData.index);
+        }
+        
+    }
+    
     private IEnumerator UIFade(GameObject gameobject, CanvasGroup canvasGroup)
     {
         gameobject.SetActive(true);
@@ -108,7 +174,8 @@ public class EndingSequenceStart : MonoBehaviour
 
         yield return new WaitForSeconds(0.9f);
         zombie.SetTrigger("scream");
-       // yield return new WaitForSeconds(0.2f);
+        Debug.Log("Scream.Play()");
+        // yield return new WaitForSeconds(0.2f);
         // if(!screamed)
         // {
         //     Debug.Log("Scream.Play()");
@@ -162,5 +229,12 @@ public class EndingSequenceStart : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         shutdown.SetTrigger("OpenGate");
+    }
+    private IEnumerator retry(GameObject s, CanvasGroup c, GameObject bo, CanvasGroup BO)
+    {
+        changeTxt();
+        StartCoroutine(UIFade(bo, BO));
+        yield return new WaitForSeconds(3.5f);
+        StartCoroutine(chasing(s,c));
     }
 }
