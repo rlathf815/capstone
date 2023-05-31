@@ -24,5 +24,7 @@ public class SharedData : ScriptableObject
     public bool horrorPatient = false;
     public bool horrorPatient2 = false;
     public bool bodyParked2 = false;
+
+    public bool isCaught = false;
     public bool glitchOn = false;
 }

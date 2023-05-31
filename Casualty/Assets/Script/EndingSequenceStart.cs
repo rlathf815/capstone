@@ -47,6 +47,11 @@ public class EndingSequenceStart : MonoBehaviour
         scream.SetActive(true);
         ai.SetActive(false);
         //shutdown.SetTrigger("ShutdownOn");
+
+        // 여기다가 조건문으로,,isCaught false면 오프닝장면부터, true면 검은화면부터,,,
+        // 검은화면은 blackoutimage 하나 만들고 UIFade로 넣으면될듯
+        // 시작할때 나오는 자막은 chasing(GameObject s, CanvasGroup c) 파라미터로 전달
+
         StartCoroutine(endingSequenceStart());
 
         mainCam.transform.LookAt(ai.transform);
@@ -136,7 +141,13 @@ public class EndingSequenceStart : MonoBehaviour
         mainCam.enabled = true;
         mainCam = Camera.main;
         subCam.enabled = false;
-        StartCoroutine(UIFade(subtitle, canvasGroup));
+        StartCoroutine(chasing(subtitle, canvasGroup));
+        
+
+    }
+    private IEnumerator chasing(GameObject s, CanvasGroup c)
+    {
+        StartCoroutine(UIFade(s, c));
 
         yield return new WaitForSeconds(0.1f);
         scream.SetActive(false);
@@ -151,6 +162,5 @@ public class EndingSequenceStart : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         shutdown.SetTrigger("OpenGate");
-
     }
 }

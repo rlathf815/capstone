@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class AIController : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class AIController : MonoBehaviour
     public int destinationAmount, TeleportTargetAmount, targetDestinationIndex, teleportTargetIndex, endingSceneAmount;
     public GameObject player;
     public Vector3 rayCastOffset;
-
+    public SharedData sharedData;
     public static bool isPlayerHiding = false;
 
     private Transform currentDest;
@@ -241,19 +242,24 @@ public class AIController : MonoBehaviour
             attacking = false;
             aiAnim.SetTrigger("chase");
             StartCoroutine("chaseRoutine");
-            if (teleportTargetIndex > TeleportTargetAmount)
-            {
-                teleportTargetIndex = 0;
-                player.transform.position = TeleportTargetObject[teleportTargetIndex].transform.position;
-                player.transform.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
-                teleportTargetIndex++;
-            }
-            else
-            {
-                player.transform.position = TeleportTargetObject[teleportTargetIndex].transform.position;
-                player.transform.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
-                teleportTargetIndex++;
-            }
+            // if (teleportTargetIndex > TeleportTargetAmount)
+            // {
+            //     teleportTargetIndex = 0;
+            //     player.transform.position = TeleportTargetObject[teleportTargetIndex].transform.position;
+            //     player.transform.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
+            //     teleportTargetIndex++;
+            // }
+            // else
+            // {
+            //     player.transform.position = TeleportTargetObject[teleportTargetIndex].transform.position;
+            //     player.transform.rotation = TeleportTargetObject[teleportTargetIndex].transform.rotation;
+            //     teleportTargetIndex++;
+            // }
+            //player.transform.position = new Vector3(-1.143f, 1.2f, 14.5f);
+            //player.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            //sharedData.isCaught = true;
+            SceneManager.LoadScene("HorrorScene_ending");
+
         }
 
     }

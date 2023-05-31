@@ -144,7 +144,7 @@ Material:
     - _Gloss: 0.7
     - _GlossMapScale: 1
     - _Glossiness: 0
-    - _Glossiness_1: 1.53
+    - _Glossiness_1: 3
     - _GlossyReflections: 1
     - _Metallic: -3.45
     - _Mode: 0
