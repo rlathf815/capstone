@@ -24,6 +24,8 @@ public class SceneManage : MonoBehaviour
     {
         selectedPatient.description.Clear();
         audioSource = GetComponent<AudioSource>();
+        Debug.Log("Patient 1 : "+sharedData.patient1+"\nPatient2: "+sharedData.patient2 +"\nPatient3:"+sharedData.patient3);
+
     }
 
     void Update()
