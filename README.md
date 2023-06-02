@@ -33,3 +33,28 @@ ___
 ![화면 캡처 2023-05-23 105535](https://github.com/rlathf815/capstone/assets/94528532/2d34e5c9-89f8-499c-8ae8-e4a65a3042e7)
 
 
+## 🏆 AWARDS 
+
+**한성대학교 2023 캡스톤디자인**
+**디지털콘텐츠/빅데이터/AI 부문 우수상 🥈**
+![image](https://github.com/rlathf815/capstone/assets/94528532/d1718405-cc56-4d09-bc92-a2302fca3b42)
+
+## 🔗 LINK
+**HOME PAGE**  
+
+![image](https://github.com/rlathf815/capstone/assets/94528532/3b339a5a-8375-40b2-b921-9fbfebf6754d)  
+
+https://rlathfrlathf.wixsite.com/casualty-teamausol   
+
+made by 김솔   
+
+**TRAILER**  
+
+https://github.com/rlathf815/capstone/assets/94528532/506d3633-0873-4479-add5-65d22adb78bd  
+
+made by 견규원    
+
+**FULL PLAY THROUGH**  
+[![Video Label](http://img.youtube.com/vi/CvurpLtzVVU/0.jpg)](https://youtu.be/CvurpLtzVVU?t=0s)  
+
+played by 김솔  
