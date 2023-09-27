@@ -35,10 +35,16 @@ ___
 
 ## 🏆 AWARDS 
 
-**한성대학교 2023 캡스톤디자인**
+**한성대학교 [2023 캡스톤디자인]**
 **디지털콘텐츠/빅데이터/AI 부문 우수상 🥈**
 ![image](https://github.com/rlathf815/capstone/assets/94528532/d1718405-cc56-4d09-bc92-a2302fca3b42)
 
+
+**한성대학교 [제 19회 공학경진대회]**
+**김종유/김 솔/견규원 본선 진출 및 동상 🥉**
+
+
+![KakaoTalk_20230926_155458524](https://github.com/rlathf815/capstone/assets/94528532/18382be9-7d46-49cb-b027-b9f172d20267)
 ## 🔗 LINK
 **HOME PAGE**  
 
